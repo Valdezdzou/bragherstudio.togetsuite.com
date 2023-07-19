@@ -7,7 +7,7 @@ class DataSource
 
     const HOST = 'localhost';
     const USERNAME = 'root';
-    const passwordWORD = 'root';
+    const passwordWORD = '';
     const DATABASENAME = 'togetsuite_bar';
     private $conn;
 

@@ -9,7 +9,10 @@
 
         function header(){
            
+            $this->SetFillColor(0,0,255);
+            $this->Rect(-2,-1,5,400,'F');
             $fa_code = $_GET['fa_code'];
+            $fa_Date = $_GET['fa_Date'];
 
             $this->ln(-6);
             
@@ -19,12 +22,21 @@
 
             $this->SetFont('Arial','B',15);
             $this->Cell(58,5,"FACTURE # $fa_code", 0,0,'R');
+            $this->SetFont('Arial','B',12);
+            $this->Cell(48,5,"Date: ", 0,0,'R');
+            $this->SetTextColor(0,0,255);
+            $this->Cell(21,5,"$fa_Date", 0,0,'R');
             
+            
+
             $this->ln(10);
             
         }
         
         function footer (){
+
+            $us_name = $_GET['us_name'];
+
             $this->SetY(-18);
             global $note;
             $this->SetFont('Arial','B',8);
@@ -38,16 +50,20 @@
             $this->ln(5);
             $this->Cell(10,5,iconv('UTF-8','ISO-8859-2','Edité le'), 0,0,'L');
             $this->Cell(15,5,date("m-d-Y"), 0,0,'L');
+            $this->Cell(10,5,"par: $us_name", 0,0,'L');
             
-            $this->Cell(70,5,'TOGETSUITE APPLICATION', 0,0,'C');
-            $this->Cell(40,5,'Powered By TogetTech - 2021', 0,0,'R');
+            $this->Cell(65,5,'TOGETSUITE APPLICATION', 0,0,'C');
+            $this->Cell(30,5,'Powered By TogetTech - 2021', 0,0,'R');
         }
 
         function headerTable(){
             $this->SetFont('Arial','B',10);
-            $this->Cell(95,9,iconv('UTF-8','ISO-8859-2','Ref.'), 1,0,'L');
-            $this->Cell(15,9,iconv('UTF-8','ISO-8859-2','Qté.'), 1,0,'C');
+            $this->SetDrawColor(0,0,255);
+           
+            $this->Cell(70,9,iconv('UTF-8','ISO-8859-2','Ref.'), 1,0,'L');
             $this->Cell(20,9,iconv('UTF-8','ISO-8859-2','P.U.'), 1,0,'C');
+            $this->Cell(17,9,iconv('UTF-8','ISO-8859-2','Quantité'), 1,0,'C');
+            $this->Cell(20,9,iconv('UTF-8','ISO-8859-2','Total'), 1,0,'C');
             $this->ln();
             
         }
@@ -72,9 +88,10 @@
                 
                 while ($data = $stmt->fetch(PDO::FETCH_OBJ)) {
                     $this->SetFont('Arial','',10);
-                    $this->Cell(95,7,$data->pr_designation, 1,0,'L');
-                    $this->Cell(15,7,$data->quantite_total_vente, 1,0,'C');
+                    $this->Cell(70,7,$data->pr_designation, 1,0,'L');
                     $this->Cell(20,7,$data->pr_prix_vente, 1,0,'C');
+                    $this->Cell(17,7,$data->quantite_total_vente, 1,0,'C');
+                    $this->Cell(20,7,$data->prix_total_vente, 1,0,'C');
 
                     $this->ln();
                 }
@@ -102,9 +119,11 @@
 
 
             $this->SetFont('Arial','B',12);
-            $this->Cell(95,6,iconv('UTF-8','ISO-8859-2','Montant (Franc CFA)'), 1,0,'L');
+            $this->Cell(70,6,iconv('UTF-8','ISO-8859-2','Montant Total (Franc CFA)'), 1,0,'C');
+            $this->SetTextColor(0,0,255);
             $this->Cell(35,6,"$total_pay XAF", 1,0,'R');
             $this->ln();
+            
             
         }
 
@@ -128,4 +147,4 @@
 
     $file = 'facturebar.pdf';
 
-    $pdf->Output();
+    $pdf->Output("");

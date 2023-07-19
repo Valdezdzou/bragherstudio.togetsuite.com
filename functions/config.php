@@ -21,6 +21,27 @@
 		}
 		return $logged;
 	}
+
+   function search($search_term) {
+
+        $pdo = new PDO('mysql:host=localhost;dbname=togetsuite_bar', 'root', '');
+        $query = $pdo->prepare('SELECT * FROM fa_Code WHERE colonne LIKE :search_term');
+        
+        $search_term = '%' . $search_term . '%';
+    
+        // Lier la variable $search_term au paramètre :search_term de la requête préparée
+        $query->bindParam(':search_term', $search_term, PDO::PARAM_STR);
+    
+        // Exécuter la requête
+        $query->execute();
+    
+        // Récupérer les résultats de la requête sous forme d'un tableau associatif
+        $results = $query->fetchAll(PDO::FETCH_ASSOC);
+    
+        // Retourner les résultats de la recherche
+        return $results;
+    }
+   
 	setlocale(LC_ALL, 'fr_FR.UTF8', 'fr_FR','fr','fr','fra','fr_FR@euro');
 
 
@@ -104,4 +125,5 @@
     }
 
 
-	
+
+    
