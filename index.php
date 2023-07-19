@@ -133,23 +133,41 @@
             <!-- Produits  -->
             <div class="section mt-2">
                 <div class="card">
-                    <?php 
-                        $con = new mysqli('localhost','root','','togetsuite_bar');
-                        $query = $con->query("
-                            SELECT
-                                pr_id_fk,
-                                stc_quantite
-                            FROM 
-                                tsb_stocks");
+                    <div class="filter_graph_vente">
+                        <from >
+                            <select>
+                                <option>semaine</option>
+                                <option>mois</option>
+                                <option>Trimeste</option>
+                            </select>
+                        </form>
+                    </div>
+                    <?php
+                        // Connexion à la base de données
+                        $con = new mysqli('localhost', 'root', '', 'togetsuite_bar');
 
-                        foreach($query as $data)
-                        {
-                            $test1[] = $data['pr_id_fk'];
-                            $test2[] = $data['stc_quantite'];
+                        // Exécution de la requête SQL pour avoir les ventes cloturer par jour
+                        $query = $con->query("
+                            SELECT SUM(pr_prix_vente * fa_quantite) as total, DATE(fa_date) as date
+                            FROM tsb_factures 
+                            WHERE fa_status = 'Pay' 
+                            GROUP BY DATE(fa_date)");
+
+                        // Stockage des résultats dans deux tableaux date et total
+                        $date = array();
+                        $total = array();
+                        if ($query->num_rows > 0) {
+                            while ($row = $query->fetch_assoc()) {
+                                $date[] = $row['date'];
+                                $total[] = $row['total'];
+                            }
                         }
 
+                        // Fermeture de la connexion
+                        $con->close();
                     ?>
-                    <canvas id="myChart" class="card-img-top"></canvas>
+                    <canvas id="graph_vente" class="card-img-top"></canvas>
+                    
                     <div class="card-body">
                         <h5 class="card-title">Ventes</h5>
                         <p class="card-text">Produits les plus vendus</p>
@@ -199,6 +217,54 @@
         </div> -->
         <!-- * welcome notification -->
 
+
+        <!-- graph ventes -->
+        <script>
+            // localisation de la balise canvas pour envoyer le graphe
+            var ctx1 = document.getElementById('graph_vente').getContext('2d');
+            var data1 = {
+                // donnee en X
+                labels: <?php echo json_encode($date) ?>,
+                datasets: [{
+                label: 'Courbe des ventes f(jours)',
+                // valuer de la courbe 
+                data: <?php echo json_encode($total) ?>,
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+                }]
+            };
+            var options1 = {
+                scales: {
+                yAxes: [{
+                    ticks: {
+                    beginAtZero: true
+                    }
+                }]
+                }
+            };
+            var chart1 = new Chart(ctx1, {
+                type: 'line',
+                data: data1,
+                options: options1
+            });
+        </script>
+        <style>
+            .filter_graph_vente{
+                width: 100%;
+                margin: 10px 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .filter_graph_vente select{
+                padding: 5px;
+                border: none;
+                border-bottom:1px solid black;
+            }
+        </style>
+        <!-- end -->
 
         <script>
             // === include 'setup' then 'config' above ===
