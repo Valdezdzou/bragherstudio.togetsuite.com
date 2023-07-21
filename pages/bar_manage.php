@@ -157,16 +157,6 @@
         <div class="listview-title mt-2">Stocks</div>
         <ul class="listview image-listview flush transparent">
             <li>
-                <a href="../pages/stock_initialize.php" class="item">
-                    <div class="icon-box bg-success">
-                        <ion-icon name="download-outline"></ion-icon>
-                    </div>
-                    <div class="in">
-                        Initialisation des stocks (Mise à zéro)
-                    </div>
-                </a>
-            </li>
-            <li>
                 <a href="../pages/bar_etat_stock.php" class="item">
                     <div class="icon-box bg-success">
                         <ion-icon name="download-outline"></ion-icon>
@@ -175,31 +165,7 @@
                         Etat des stocks
                     </div>
                 </a>
-            </li>
-            <li>
-                <a href="../pages/stock_app_magasin.php" class="item">
-                    <div class="icon-box bg-success">
-                        <ion-icon name="duplicate-outline"></ion-icon>
-                    </div>
-                    <div class="in">
-                        Approvisionnement du magasin
-                    </div>
-                </a>
-            </li>
-
-            <li>
-                <a href="../pages/stock_app_caisse.php" class="item">
-                    <div class="icon-box bg-success">
-                        <ion-icon name="duplicate-outline"></ion-icon>
-                    </div>
-                    <div class="in">
-                        Approvisionnement du comptoir
-                    </div>
-                </a>
-            </li>
-
-            
-           
+            </li>      
         </ul>
 
         
