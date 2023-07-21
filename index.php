@@ -134,38 +134,13 @@
             <div class="section mt-2">
                 <div class="card">
                     <div class="filter_graph_vente">
-                        <from >
-                            <select>
-                                <option>semaine</option>
-                                <option>mois</option>
-                                <option>Trimeste</option>
-                            </select>
-                        </form>
+                        <label for="graph-select">Choisir un filtre pour la periode :</label>
+                        <select id="graph-select">
+                            <option>Les 07 derniers jours</option>
+                            <option>Le mois en cours</option>
+                            <option>Le Trimestre en cours</option>
+                        </select>
                     </div>
-                    <?php
-                        // Connexion à la base de données
-                        $con = new mysqli('localhost', 'root', '', 'togetsuite_bar');
-
-                        // Exécution de la requête SQL pour avoir les ventes cloturer par jour
-                        $query = $con->query("
-                            SELECT SUM(pr_prix_vente * fa_quantite) as total, DATE(fa_date) as date
-                            FROM tsb_factures 
-                            WHERE fa_status = 'Pay' 
-                            GROUP BY DATE(fa_date)");
-
-                        // Stockage des résultats dans deux tableaux date et total
-                        $date = array();
-                        $total = array();
-                        if ($query->num_rows > 0) {
-                            while ($row = $query->fetch_assoc()) {
-                                $date[] = $row['date'];
-                                $total[] = $row['total'];
-                            }
-                        }
-
-                        // Fermeture de la connexion
-                        $con->close();
-                    ?>
                     <canvas id="graph_vente" class="card-img-top"></canvas>
                     
                     <div class="card-body">
@@ -219,34 +194,199 @@
 
 
         <!-- graph ventes -->
-        <script>
-            // localisation de la balise canvas pour envoyer le graphe
-            var ctx1 = document.getElementById('graph_vente').getContext('2d');
-            var data1 = {
-                // donnee en X
-                labels: <?php echo json_encode($date) ?>,
-                datasets: [{
-                label: 'Courbe des ventes f(jours)',
-                // valuer de la courbe 
-                data: <?php echo json_encode($total) ?>,
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                borderColor: 'rgba(255, 99, 132, 1)',
-                borderWidth: 1
-                }]
-            };
-            var options1 = {
-                scales: {
-                yAxes: [{
-                    ticks: {
-                    beginAtZero: true
-                    }
-                }]
+        <?php
+            // Connexion à la base de données
+            $con = new mysqli('localhost', 'root', '', 'togetsuite_bar');
+
+            // Exécution de la requête SQL pour avoir les ventes cloturer par jour
+            $query = $con->query("
+                SELECT SUM(pr_prix_vente * fa_quantite) AS total, DATE(fa_date) as date
+                FROM tsb_factures
+                WHERE fa_status = 'Pay' AND fa_date >= DATE_SUB(CURDATE(), INTERVAL 7 DAY)
+                GROUP BY DATE(fa_date)");
+
+            // Stockage des résultats dans deux tableaux date et total
+            $date = array();
+            $total = array();
+            if ($query->num_rows > 0) {
+                while ($row = $query->fetch_assoc()) {
+                    $date[] = $row['date'];
+                    $total[] = $row['total'];
                 }
-            };
-            var chart1 = new Chart(ctx1, {
-                type: 'line',
-                data: data1,
-                options: options1
+            }
+            // -----------------------------requette pour le mois en cours-----------------------
+            
+            $query = $con->query("
+                SELECT SUM(pr_prix_vente * fa_quantite) AS total, DATE(fa_date) as date
+                FROM tsb_factures
+                WHERE fa_status = 'Pay' AND MONTH(fa_date) = MONTH(CURDATE()) AND YEAR(fa_date) = YEAR(CURDATE())
+                GROUP BY DATE(fa_date)");
+
+            // Stockage des résultats dans deux tableaux date et total
+            $date_mois = array();
+            $total_mois = array();
+            if ($query->num_rows > 0) {
+                while ($row = $query->fetch_assoc()) {
+                    $date_mois[] = $row['date'];
+                    $total_mois[] = $row['total'];
+                }
+            }
+            // ---------------------------------requette pour le trimestre en cours----------------------------
+            
+            $query = $con->query("
+                SELECT SUM(pr_prix_vente * fa_quantite) AS total, DATE(fa_date) as date
+                FROM tsb_factures
+                WHERE fa_status = 'Pay'
+                AND YEAR(fa_date) = YEAR(CURRENT_DATE)
+                AND MONTH(fa_date) BETWEEN MONTH(CURRENT_DATE) - 2 AND MONTH(CURRENT_DATE)
+                GROUP BY DATE(fa_date)");
+
+            // Stockage des résultats dans deux tableaux date et total
+            $date_trimestre = array();
+            $total_trimestre = array();
+            if ($query->num_rows > 0) {
+            while ($row = $query->fetch_assoc()) {
+                $date_trimestre[] = $row['date'];
+                $total_trimestre[] = $row['total'];
+            }
+            }
+
+            // Fermeture de la connexion
+            $con->close();
+        ?>
+        <script>
+            // localisation des balises html pour l'envoi des donnees
+            const graphSelect = document.getElementById('graph-select');
+            const ctx = document.getElementById('graph_vente').getContext('2d');
+
+            function loadGraph(selectedGraph) {
+            switch (selectedGraph) {
+                case 'Les 07 derniers jours':
+                    window.myChart.destroy();
+                    var data1 = {
+                        // donnee en X
+                        labels: <?php echo json_encode($date) ?>,
+                        datasets: [{
+                        label: 'Courbe des ventes f(jours)',
+                        // valuer de la courbe 
+                        data: <?php echo json_encode($total) ?>,
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1
+                        }]
+                    };
+                    var options1 = {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                beginAtZero: true
+                                }
+                            }]
+                        }
+                    };
+                    window.myChart = new Chart(ctx, {
+                        type: 'line',
+                        data: data1,
+                        options: options1
+                    });
+                break;
+                case 'Le mois en cours':
+                    window.myChart.destroy();
+                    var data2 = {
+                        // donnee en X
+                        labels: <?php echo json_encode($date_mois) ?>,
+                        datasets: [{
+                        label: 'Courbe des ventes f(jours)',
+                        // valuer de la courbe 
+                        data: <?php echo json_encode($total_mois) ?>,
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1
+                        }]
+                    };
+                    var options2 = {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                beginAtZero: true
+                                }
+                            }]
+                        }
+                    };
+                    window.myChart = new Chart(ctx, {
+                        type: 'line',
+                        data: data2,
+                        options: options2
+                    });
+                break;
+                case 'Le Trimestre en cours':
+                    window.myChart.destroy();
+                    var data3 = {
+                        // donnee en X
+                        labels: <?php echo json_encode($date_trimestre) ?>,
+                        datasets: [{
+                        label: 'Courbe des ventes f(jours)',
+                        // valuer de la courbe 
+                        data: <?php echo json_encode($total_trimestre) ?>,
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1
+                        }]
+                    };
+                    var options3 = {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                beginAtZero: true
+                                }
+                            }]
+                        }
+                    };
+                    window.myChart = new Chart(ctx, {
+                        type: 'line',
+                        data: data3,
+                        options: options3
+                    });
+                break;
+                default:
+                    var data1 = {
+                        // donnee en X
+                        labels: <?php echo json_encode($date) ?>,
+                        datasets: [{
+                        label: 'Courbe des ventes f(jours)',
+                        // valuer de la courbe 
+                        data: <?php echo json_encode($total) ?>,
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1
+                        }]
+                    };
+                    var options1 = {
+                        scales: {
+                        yAxes: [{
+                            ticks: {
+                            beginAtZero: true
+                            }
+                        }]
+                        }
+                    };
+                    window.myChart = new Chart(ctx, {
+                        type: 'line',
+                        data: data1,
+                        options: options1
+                    });
+                break;
+            }
+            }
+
+            graphSelect.addEventListener('change', function() {
+            const selectedGraph = graphSelect.value;
+            loadGraph(selectedGraph);
+            });
+
+            document.addEventListener('DOMContentLoaded', function() {
+            const defaultGraph = 'default';
+            loadGraph(defaultGraph);
             });
         </script>
         <style>
@@ -262,6 +402,9 @@
                 padding: 5px;
                 border: none;
                 border-bottom:1px solid black;
+            }
+            .filter_graph_vente label{
+                margin-rigth: 10px;
             }
         </style>
         <!-- end -->

@@ -1,5 +1,5 @@
 <?php // content="text/plain; charset=utf-8"
-// $Id: logbarex1.php,v 1.4 2003/05/30 20:12:43 aditus Exp $
+// $Id: logbarex1.php,v 1.4 2003/07/30 20:12:43 aditus Exp $
 require_once ('jpgraph/jpgraph.php');
 require_once ('jpgraph/jpgraph_log.php');
 require_once ('jpgraph/jpgraph_bar.php');
