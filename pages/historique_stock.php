@@ -55,7 +55,7 @@
                 <ion-icon name="chevron-back-outline"></ion-icon>
             </a>
         </div>
-        <div class="pageTitle">Etat du magasin</div>
+        <div class="pageTitle">Historiques du Stock</div>
         <div class="right"></div>
     </div>
     <!-- * App Header -->
@@ -65,17 +65,12 @@
         <ul class="nav nav-tabs lined" role="tablist">
             <li class="nav-item">
                 <a class="nav-link active" data-bs-toggle="tab" href="#photos" role="tab">
-                    Alcoolisées
+                    Magasin
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="tab" href="#videos" role="tab">
-                    Non alcoolisées
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="tab" href="#sounds" role="tab">
-                    Autres
+                    Comptoir
                 </a>
             </li>
         </ul>
@@ -105,25 +100,54 @@
 
                     <div class="section full mt-1">
                         <ul class="listview image-listview">
-
+                            <li>
+                                   <div class="item">
+                                          <div class="in">
+                                             <div>
+                                                  <h3>Date</h3>
+                                             </div>
+                                             <div>
+                                                  <h3>Q.avant</h3>
+                                             </div>
+                                             <div>
+                                                  <h3>Q.apres</h3>
+                                             </div>
+                                             <div>
+                                                  <h3></h3>
+                                             </div>
+                                        </div>
+                                    </div>
+                            </li>
                             <?php
-                                $sqlSelect = 'SELECT * FROM tsb_produits,tsb_stocks where pr_categorie="Alcoolisé" and tsb_produits.pr_id=tsb_stocks.pr_id_fk and st_quantite!=0';
+                                $sqlSelect = 'SELECT * FROM tsb_stocks where st_status="magasin" GROUP BY st_date';
                                 $result = $bdd->selectEtu($sqlSelect);
                                 if (! empty($result)) {
 
-                                    foreach ($result as $row) {
+                                    foreach ($result as $row) { 
                             ?>
-                        
+                            
                                 <li>
                                     <div class="item">
                                         <div class="in">
                                             <div>
-                                                <ion-icon name="beer-outline"  class=""></ion-icon>
-                                                <span style="font-size: 12px;"><?php  echo $row['pr_designation']; ?></span>
+                                                <span style="font-size: 12px;"><?php  echo $row['st_date']; ?></span>
                                             </div>
-                                            <span class="badge">
-                                                <input readonly type="number" style="width: 40px; text-align:right" value="<?php  echo $row['st_quantite']; ?>">
-                                            </span>
+                                            <div>
+                                                <span class="badge">
+                                                   <input readonly type="number" style="width: 40px; text-align:right" value="<?php  echo $row['st_quantite']; ?>">
+                                               </span>
+                                            </div>
+                                            <div>
+                                               <span class="badge">
+                                                   <input readonly type="number" style="width: 40px; text-align:right" value="<?php  echo $row['st_quantite']; ?>">
+                                               </span>
+                                            </div>                                         
+                                            <div class="right">
+                                                  <a href="details_historiques_stock.php?st_date=<?php echo $row['st_date']; ?>">
+                                                      <ion-icon name="eye"></ion-icon>
+                                                      <ion-icon name="chevron-forward-outline"></ion-icon>
+                                                  </a>
+                                            </div>                                
                                         </div>
                                     </div>
                                 </li>
@@ -144,77 +168,68 @@
 
                     <div class="section full mt-1">
                         <ul class="listview image-listview">
+                        <li>
+                                   <div class="item">
+                                          <div class="in">
+                                             <div>
+                                                  <h3>Date</h3>
+                                             </div>
+                                             <div>
+                                                  <h3>Q.avant</h3>
+                                             </div>
+                                             <div>
+                                                  <h3>Q.apres</h3>
+                                             </div>
+                                             <div>
+                                                  <h3></h3>
+                                             </div>
+                                        </div>
+                                    </div>
+                            </li>
                             <?php
-                                $sqlSelect = 'SELECT * FROM tsb_produits,tsb_stocks where pr_categorie="Non alcoolisé" and tsb_produits.pr_id=tsb_stocks.pr_id_fk and st_quantite!=0';
+                                $sqlSelect = 'SELECT * FROM tsb_stocks where st_status="comptoir" GROUP BY st_date ';
                                 $result = $bdd->selectEtu($sqlSelect);
                                 if (! empty($result)) {
 
-                                    foreach ($result as $row) {
+                                    foreach ($result as $row) { 
                             ?>
-
+                            
                                 <li>
                                     <div class="item">
                                         <div class="in">
                                             <div>
-                                                <ion-icon name="beer-outline"  class=""></ion-icon>
-                                                <span style="font-size: 12px;"><?php  echo $row['pr_designation']; ?></span>
+                                                <span style="font-size: 12px;"><?php  echo $row['st_date']; ?></span>
                                             </div>
-                                            <span class="badge">
-                                                <input readonly type="number" style="width: 40px; text-align:right" value="<?php  echo $row['st_quantite']; ?>">
-                                            </span>
+                                            <div>
+                                                <span class="badge">
+                                                   <input readonly type="number" style="width: 40px; text-align:right" value="<?php  echo $row['st_quantite']; ?>">
+                                               </span>
+                                            </div>
+                                            <div>
+                                               <span class="badge">
+                                                   <input readonly type="number" style="width: 40px; text-align:right" value="<?php  echo $row['st_quantite']; ?>">
+                                               </span>
+                                            </div>                                         
+                                            <div class="right">
+                                                  <a href="details_historiques_stock.php?st_date=<?php echo $row['st_date']; ?>">
+                                                      <ion-icon name="eye"></ion-icon>
+                                                      <ion-icon name="chevron-forward-outline"></ion-icon>
+                                                  </a>
+                                            </div>                                
                                         </div>
                                     </div>
                                 </li>
 
                                 <input name="pr_id[]" type="hidden" value="<?php  echo $row['pr_id']; ?>">
-                            
+
                             <?php } } ?>
-
-
+                            
                         </ul>
 
                     </div>
 
                 </div>
                 <!-- * Non Alcoolisé tab -->
-
-                <!-- Autres tab -->
-                <div class="tab-pane fade" id="sounds" role="tabpanel">
-
-                    <div class="section full mt-1">
-                        <ul class="listview image-listview">
-                            <?php
-                                $sqlSelect = 'SELECT * FROM tsb_produits, tsb_stocks where pr_categorie!="Alcoolisé" and pr_categorie!="Non alcoolisé" and tsb_produits.pr_id=tsb_stocks.pr_id_fk and st_quantite!=0';
-                                $result = $bdd->selectEtu($sqlSelect);
-                                if (! empty($result)) {
-
-                                    foreach ($result as $row) {
-                            ?>
-
-                                <li>
-                                    <div class="item">
-                                        <div class="in">
-                                            <div>
-                                                <ion-icon name="beer-outline"  class=""></ion-icon>
-                                                <span style="font-size: 12px;"><?php  echo $row['pr_designation']; ?></span>
-                                            </div>
-                                            <span class="badge">
-                                                <input readonly type="number" style="width: 40px; text-align:right" value="<?php  echo $row['st_quantite']; ?>">
-                                            </span>
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <input name="pr_id[]" type="hidden" value="<?php  echo $row['pr_id']; ?>">
-                            
-                            <?php } } ?>
-
-
-                        </ul>
-
-                    </div>
-                </div>
-                <!-- * Autres tab -->
 
             </div>
 

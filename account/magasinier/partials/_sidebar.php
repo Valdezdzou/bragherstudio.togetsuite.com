@@ -1,4 +1,4 @@
-  
+
 <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebarPanel">
     <div class="offcanvas-body">
         <!-- profile box -->
@@ -22,7 +22,7 @@
 
         <ul class="listview flush transparent no-line image-listview mt-2">
             <li>
-                <a href="http://localhost/bragherstudio.togetsuite.com/account/service/index.php" class="item">
+                <a href="http://localhost/bragherstudio.togetsuite.com/account/magasinier/" class="item">
                     <div class="icon-box bg-primary">
                         <ion-icon name="home-outline"></ion-icon>
                     </div>
@@ -33,28 +33,49 @@
             </li>
 
             <li>
-                <a href="http://localhost/bragherstudio.togetsuite.com/account/service/pages/commande_add.php" class="item">
+                <a href="http://localhost/bragherstudio.togetsuite.com/pages/bar_etat_stock.php" class="item">
                     <div class="icon-box bg-primary">
                         <ion-icon name="cube-outline"></ion-icon>
                     </div>
                     <div class="in">
-                        Commandes
+                        Etat Stock
                     </div>
                 </a>
             </li>
 
             <li>
-                <a href="http://localhost/bragherstudio.togetsuite.com/account/service/pages/facture_open.php" class="item">
+                <a href="http://localhost/bragherstudio.togetsuite.com/pages/stock_app_caisse.php" class="item">
                     <div class="icon-box bg-primary">
-                        <ion-icon name="layers-outline"></ion-icon>
+                        <ion-icon name="cube-outline"></ion-icon>
                     </div>
                     <div class="in">
-                        <div>Factures</div>
+                        Approvisionnement Comptoir
                     </div>
                 </a>
             </li>
 
-            
+            <li>
+                <a href="http://localhost/bragherstudio.togetsuite.com/pages/stock_app_magasin.php" class="item">
+                    <div class="icon-box bg-primary">
+                        <ion-icon name="cube-outline"></ion-icon>
+                    </div>
+                    <div class="in">
+                        Approvisionnement Magasin
+                    </div>
+                </a>
+            </li>
+
+            <li>
+                <a href="http://localhost/bragherstudio.togetsuite.com/pages/historique_stock.php" class="item">
+                    <div class="icon-box bg-primary">
+                        <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+                    </div>
+                    <div class="in">
+                        <div>Historiques Stock</div>
+                    </div>
+                </a>
+            </li>
+
             <li>
                 <div class="item">
                     <div class="icon-box bg-primary">
@@ -83,7 +104,7 @@
         <a href="#" class="button">
             <ion-icon name="settings-outline"></ion-icon>
         </a> -->
-        <a href="http://localhost:8080/bragherstudio.togetsuite.com/pages/user_logout.php" class="button">
+        <a href="http://localhost/bragherstudio.togetsuite.com/pages/user_logout.php" class="button">
             <ion-icon name="log-out-outline"></ion-icon>
         </a>
     </div>

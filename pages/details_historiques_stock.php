@@ -18,6 +18,7 @@
     $bdd = new DataSource();
     $conn = $bdd->getConnection();
     //require_once ('functions/vendor/autoload.php');
+    $date = $_GET['st_date'];
 
 ?>
 
@@ -55,8 +56,11 @@
                 <ion-icon name="chevron-back-outline"></ion-icon>
             </a>
         </div>
-        <div class="pageTitle">Etat du magasin</div>
-        <div class="right"></div>
+        <div class="pageTitle">
+                     Etat du magasin
+            <h5 style="text-align: center;"><?php  echo $date; ?></h5>
+       </div>
+        <div class="right" ></div>
     </div>
     <!-- * App Header -->
 
@@ -107,7 +111,9 @@
                         <ul class="listview image-listview">
 
                             <?php
-                                $sqlSelect = 'SELECT * FROM tsb_produits,tsb_stocks where pr_categorie="Alcoolisé" and tsb_produits.pr_id=tsb_stocks.pr_id_fk and st_quantite!=0';
+                                $sqlSelect = "SELECT * FROM tsb_produits,tsb_stocks
+                                 where pr_categorie='Alcoolisé' and tsb_produits.pr_id=tsb_stocks.pr_id_fk and st_quantite!=0 and st_status='magasin' and st_date='$date'
+                                 ";
                                 $result = $bdd->selectEtu($sqlSelect);
                                 if (! empty($result)) {
 
@@ -145,7 +151,7 @@
                     <div class="section full mt-1">
                         <ul class="listview image-listview">
                             <?php
-                                $sqlSelect = 'SELECT * FROM tsb_produits,tsb_stocks where pr_categorie="Non alcoolisé" and tsb_produits.pr_id=tsb_stocks.pr_id_fk and st_quantite!=0';
+                                $sqlSelect = 'SELECT * FROM tsb_produits,tsb_stocks where pr_categorie="Non alcoolisé" and tsb_produits.pr_id=tsb_stocks.pr_id_fk and st_quantite!=0  ';
                                 $result = $bdd->selectEtu($sqlSelect);
                                 if (! empty($result)) {
 
@@ -184,7 +190,7 @@
                     <div class="section full mt-1">
                         <ul class="listview image-listview">
                             <?php
-                                $sqlSelect = 'SELECT * FROM tsb_produits, tsb_stocks where pr_categorie!="Alcoolisé" and pr_categorie!="Non alcoolisé" and tsb_produits.pr_id=tsb_stocks.pr_id_fk and st_quantite!=0';
+                                $sqlSelect = 'SELECT * FROM tsb_produits, tsb_stocks where pr_categorie!="Alcoolisé" and pr_categorie!="Non alcoolisé" and tsb_produits.pr_id=tsb_stocks.pr_id_fk and st_quantite!=0 ';
                                 $result = $bdd->selectEtu($sqlSelect);
                                 if (! empty($result)) {
 

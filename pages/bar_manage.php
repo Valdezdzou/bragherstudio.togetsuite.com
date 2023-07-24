@@ -165,7 +165,51 @@
                         Etat des stocks
                     </div>
                 </a>
-            </li>      
+            </li>   
+            <li>
+                <a href="../pages/stock_app_magasin.php" class="item">
+                    <div class="icon-box bg-success">
+                        <ion-icon name="download-outline"></ion-icon>
+                    </div>
+                    <div class="in">
+                        Approvisionnement 
+                    </div>
+                </a>
+            </li>  
+        </ul>
+
+        <div class="listview-title mt-2">Historiques</div>
+        <ul class="listview image-listview flush transparent">
+            <li>
+                <a href="../pages/bar_etat_stock.php" class="item">
+                    <div class="icon-box bg-info">
+                        <ion-icon name="time-outline"></ion-icon>
+                    </div>
+                    <div class="in">
+                         Historiques Ventes
+                    </div>
+                </a>
+            </li>   
+            <li>
+                <a href="../pages/historique_stock.php" class="item">
+                    <div class="icon-box bg-info">
+                       <ion-icon name="time-outline"></ion-icon>
+                    </div>
+                    <div class="in">
+                        Historiques Stocks
+                    </div>
+                </a>
+            </li>  
+            <li>
+                <a href="../pages/bar_etat_stock.php" class="item">
+                    <div class="icon-box bg-info">
+                        <ion-icon name="time-outline"></ion-icon>
+                    </div>
+                    <div class="in">
+                        Historiques ristournes
+                    </div>
+                </a>
+            </li>  
         </ul>
 
         

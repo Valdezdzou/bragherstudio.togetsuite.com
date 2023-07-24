@@ -46,8 +46,8 @@
 
         <div class="login-form">
             <div class="section">
-                <h1>Register</h1>
-                <h4>Fill the form to join us</h4>
+                <h1>FORMULAIRE</h1>
+                <h4>Remplissez le formulaire pour nous rejoindre</h4>
             </div>
             <div class="section mt-2 mb-5">
                 <form method="post" action="../functions/user_register.func.php">
@@ -109,7 +109,7 @@
                     </div>
 
                     <div class="form-button-group">
-                        <button name="save" type="submit" class="btn btn-primary btn-block btn-lg">Register</button>
+                        <button name="save" type="submit" class="btn btn-primary btn-block btn-lg">S'inscrire</button>
                     </div>
 
                 </form>

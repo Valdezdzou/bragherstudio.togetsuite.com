@@ -47,47 +47,21 @@ CREATE TABLE `tsb_factures` (
 --
 
 INSERT INTO `tsb_factures` (`fa_id`, `fa_code`, `pr_designation`, `pr_prix_vente`, `fa_quantite`, `us_name`, `fa_client`, `fa_phone`, `fa_status`, `fa_date`) VALUES
-(562, '483405435', 'BEAUF LIGHT ORDI-TANGO', '650', '1', 'POUM', 'DF', '6560648963', 'Pay', '2023/05/18'),
-(563, '501444698', 'BEAUF LIGHT ORDI-TANGO', '650', '10', 'POUM', 'DF', '', 'Pay', '2023/05/18'),
-(564, '501444698', 'BOOSTER COLA-JIN', '650', '9', 'POUM', 'DF', '', 'Pay', '2023/05/18'),
-(568, '501444698', 'COCA PALETTE 6', '650', '1', 'POUM', 'DF', '', 'Pay', '2023/05/18'),
-(569, '501444698', 'BEAUF LIGHT ORDI-TANGO', '650', '4', 'POUM', 'DF', '', 'Pay', '2023/05/18'),
-(570, '404449676', 'BEAUF LIGHT ORDI-TANGO', '650', '7', 'POUM', 'POUM - TB05', '6566064153', 'Close', '2023/05/19'),
-(571, '404449676', 'BOOSTER COLA-JIN', '650', '6', 'POUM', 'POUM - TB05', '6566064153', 'Close', '2023/05/19'),
-(572, '613998641', 'BEAUF LIGHT ORDI-TANGO', '650', '1', 'POUM', '1234', '', 'Pay', '2023/05/19'),
-(573, '613998641', 'CASTEL', '650', '1', 'POUM', '1234', '', 'Pay', '2023/05/19'),
-(574, '613998641', 'TONIC', '300', '1', 'POUM', '1234', '', 'Pay', '2023/05/19'),
-(575, '613998641', 'BEAUF LIGHT ORDI-TANGO', '650', '16', 'POUM', '1234', '', 'Pay', '2023/05/19'),
-(662, '483405435', 'BEAUF LIGHT ORDI-TANGO', '650', '6', 'POUM', 'DF', '6560648963', 'Pay', '2023/06/18'),
-(663, '501444698', 'BEAUF LIGHT ORDI-TANGO', '650', '1', 'POUM', 'DF', '', 'Pay', '2023/06/18'),
-(664, '501444698', 'BOOSTER COLA-JIN', '650', '1', 'POUM', 'DF', '', 'Pay', '2023/06/18'),
-(665, '501444698', 'CASTEL', '650', '3', 'POUM', 'DF', '', 'Pay', '2023/06/18'),
-(666, '501444698', 'KADJI', '650', '5', 'POUM', 'DF', '', 'Pay', '2023/06/18'),
-(667, '501444698', 'TONIC', '300', '8', 'POUM', 'DF', '', 'Pay', '2023/06/18'),
-(668, '501444698', 'COCA PALETTE 6', '650', '1', 'POUM', 'DF', '', 'Pay', '2023/06/18'),
-(669, '501444698', 'BEAUF LIGHT ORDI-TANGO', '650', '4', 'POUM', 'DF', '', 'Pay', '2023/06/18'),
-(670, '404449676', 'BEAUF LIGHT ORDI-TANGO', '650', '1', 'POUM', 'POUM - TB05', '6566064153', 'Close', '2023/06/19'),
-(671, '404449676', 'BOOSTER COLA-JIN', '650', '3', 'POUM', 'POUM - TB05', '6566064153', 'Close', '2023/06/19'),
-(672, '613998641', 'BEAUF LIGHT ORDI-TANGO', '650', '1', 'POUM', '1234', '', 'Pay', '2023/06/19'),
-(673, '613998641', 'CASTEL', '650', '1', 'POUM', '1234', '', 'Pay', '2023/06/19'),
-(674, '613998641', 'TONIC', '300', '10', 'POUM', '1234', '', 'Pay', '2023/06/19'),
-(675, '613998641', 'BEAUF LIGHT ORDI-TANGO', '650', '1', 'POUM', '1234', '', 'Pay', '2023/06/19'),
-(762, '483405435', 'BEAUF LIGHT ORDI-TANGO', '650', '4', 'POUM', 'DF', '6560648963', 'Pay', '2023/07/8'),
-(763, '501444698', 'BEAUF LIGHT ORDI-TANGO', '650', '1', 'POUM', 'DF', '', 'Pay', '2023/07/8'),
-(764, '501444698', 'BOOSTER COLA-JIN', '650', '5', 'POUM', 'DF', '', 'Pay', '2023/07/9'),
-(765, '501444698', 'CASTEL', '650', '1', 'POUM', 'DF', '', 'Pay', '2023/07/10'),
-(766, '501444698', 'KADJI', '650', '8', 'POUM', 'DF', '', 'Pay', '2023/07/13'),
-(767, '501444698', 'TONIC', '300', '1', 'POUM', 'DF', '', 'Pay', '2023/07/18'),
-(768, '501444698', 'COCA PALETTE 6', '650', '9', 'POUM', 'DF', '', 'Pay', '2023/07/18'),
-(769, '501444698', 'BEAUF LIGHT ORDI-TANGO', '650', '1', 'POUM', 'DF', '', 'Pay', '2023/07/18'),
-(770, '404449676', 'BEAUF LIGHT ORDI-TANGO', '650', '1', 'POUM', 'POUM - TB07', '6566064153', 'Close', '2023/07/19'),
-(771, '404449676', 'BOOSTER COLA-JIN', '650', '1', 'POUM', 'POUM - TB07', '6566064153', 'Close', '2023/07/19'),
-(772, '613998641', 'BEAUF LIGHT ORDI-TANGO', '650', '1', 'POUM', '1234', '', 'Pay', '2023/07/19'),
-(773, '613998641', 'CASTEL', '650', '1', 'POUM', '1234', '', 'Pay', '2023/07/19'),
-(774, '613998641', 'TONIC', '300', '1', 'POUM', '1234', '', 'Pay', '2023/07/19'),
-(775, '613998641', 'BEAUF LIGHT ORDI-TANGO', '650', '10', 'POUM', '1234', '', 'Pay', '2023/07/20'),
-(776, '613998641', 'TONIC', '850', '10', 'POUM', '1234', '', 'Pay', '2023/07/20'),
-(777, '613998641', 'BOOSTER COLA-JIN', '650', '1', 'POUM', '1234', '', 'Pay', '2023/07/21');
+(762, '483405435', 'BEAUF LIGHT ORDI-TANGO', '650', '1', 'POUM', 'DF', '6560648963', 'Pay', '2023/05/18'),
+(763, '501444698', 'BEAUF LIGHT ORDI-TANGO', '650', '1', 'POUM', 'DF', '', 'Pay', '2023/05/18'),
+(764, '501444698', 'BOOSTER COLA-JIN', '650', '1', 'POUM', 'DF', '', 'Pay', '2023/05/18'),
+(765, '501444698', 'CASTEL', '650', '1', 'POUM', 'DF', '', 'Pay', '2023/05/18'),
+(766, '501444698', 'KADJI', '650', '1', 'POUM', 'DF', '', 'Pay', '2023/05/18'),
+(767, '501444698', 'TONIC', '300', '1', 'POUM', 'DF', '', 'Pay', '2023/05/18'),
+(768, '501444698', 'COCA PALETTE 6', '650', '1', 'POUM', 'DF', '', 'Pay', '2023/05/18'),
+(769, '501444698', 'BEAUF LIGHT ORDI-TANGO', '650', '1', 'POUM', 'DF', '', 'Pay', '2023/05/18'),
+(770, '404449676', 'BEAUF LIGHT ORDI-TANGO', '650', '1', 'POUM', 'POUM - TB05', '6566064153', 'Close', '2023/05/19'),
+(771, '404449676', 'BOOSTER COLA-JIN', '650', '1', 'POUM', 'POUM - TB05', '6566064153', 'Close', '2023/05/19'),
+(772, '613998641', 'BEAUF LIGHT ORDI-TANGO', '650', '1', 'POUM', '1234', '', 'Pay', '2023/05/19'),
+(773, '613998641', 'CASTEL', '650', '1', 'POUM', '1234', '', 'Pay', '2023/05/19'),
+(774, '613998641', 'TONIC', '300', '1', 'POUM', '1234', '', 'Pay', '2023/05/19'),
+(775, '613998641', 'BEAUF LIGHT ORDI-TANGO', '650', '1', 'POUM', '1234', '', 'Pay', '2023/05/19'),
+(776, '613998641', 'BOOSTER COLA-JIN', '650', '1', 'POUM', '1234', '', 'Pay', '2023/05/19');
 
 -- --------------------------------------------------------
 
@@ -167,85 +141,40 @@ CREATE TABLE `tsb_stocks` (
   `fo_id` int(10) NOT NULL,
   `st_quantite` int(10) NOT NULL,
   `stc_quantite` int(10) DEFAULT NULL,
+  `st_status` varchar(100) NOT NULL,
   `stc_quantite_vente` int(10) DEFAULT NULL,
   `st_prix_achat` int(10) NOT NULL,
-  `st_date` varchar(100) NOT NULL
+  `st_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `tsb_stocks`
 --
 
-INSERT INTO `tsb_stocks` (`st_id`, `pr_id_fk`, `fo_id`, `st_quantite`, `stc_quantite`, `stc_quantite_vente`, `st_prix_achat`, `st_date`) VALUES
-(299, 1, 3, 15, 0, 0, 650, '2023/07/24'),
-(300, 2, 3, 15, 0, 0, 650, '2023/07/24'),
-(301, 3, 3, 15, 0, 0, 650, '2023/07/24'),
-(302, 4, 3, 0, 0, 0, 0, '2023/07/24'),
-(303, 5, 3, 0, 0, 0, 0, '2023/07/24'),
-(304, 6, 3, 0, 0, 0, 0, '2023/07/24'),
-(306, 8, 3, 0, 0, 0, 0, '2023/07/24'),
-(308, 10, 3, 0, 0, 0, 0, '2023/07/24'),
-(309, 11, 3, 0, 0, 0, 0, '2023/07/24'),
-(310, 12, 3, 0, 0, 0, 0, '2023/07/24'),
-(311, 13, 3, 0, 0, 0, 0, '2023/07/24'),
-(312, 14, 3, 0, 0, 0, 0, '2023/07/24'),
-(313, 15, 3, 0, 0, 0, 0, '2023/07/24'),
-(314, 16, 3, 0, 0, 0, 0, '2023/07/24'),
-(315, 17, 3, 0, 0, 0, 0, '2023/07/24'),
-(316, 18, 3, 0, 0, 0, 0, '2023/07/24'),
-(317, 19, 3, 0, 0, 0, 0, '2023/07/24'),
-(318, 20, 3, 0, 0, 0, 0, '2023/07/24'),
-(319, 21, 3, 0, 0, 0, 0, '2023/07/24'),
-(321, 23, 3, 0, 0, 0, 0, '2023/07/24'),
-(322, 24, 3, 0, 0, 0, 0, '2023/07/24');
+INSERT INTO `tsb_stocks` (`st_id`, `pr_id_fk`, `fo_id`, `st_quantite`, `stc_quantite`, `stc_quantite_vente`, `st_prix_achat`,`st_status`, `st_date`) VALUES
+(299, 1, 3, 15, 0, 0, 650,'comptoir', '2023/05/24'),
+(300, 2, 3, 15, 0, 0, 650,'magasin', '2023/05/24'),
+(301, 3, 3, 15, 0, 0, 650,'magasin', '2023/05/24'),
+(302, 4, 3, 0, 0, 0, 0,'comptoir', '2023/05/24'),
+(303, 5, 3, 0, 0, 0, 0,'magasin', '2023/05/24'),
+(304, 6, 3, 0, 0, 0, 0,'comptoir', '2023/05/24'),
+(306, 8, 3, 0, 0, 0, 0,'magasin', '2023/05/24'),
+(308, 10, 3, 0, 0, 0, 0,'comptoir', '2023/05/24'),
+(309, 11, 3, 0, 0, 0, 0,'magasin', '2023/05/24'),
+(310, 12, 3, 0, 0, 0, 0,'magasin', '2023/05/24'),
+(311, 13, 3, 0, 0, 0, 0,'comptoir', '2023/05/24'),
+(312, 14, 3, 0, 0, 0, 0,'comptoir', '2023/05/24'),
+(313, 15, 3, 0, 0, 0, 0,'comptoir', '2023/05/24'),
+(314, 16, 3, 0, 0, 0, 0,'magasin', '2023/05/24'),
+(315, 17, 3, 0, 0, 0, 0,'comptoir', '2023/05/24'),
+(316, 18, 3, 0, 0, 0, 0,'comptoir', '2023/05/24'),
+(317, 19, 3, 0, 0, 0, 0,'magasin','2023/05/24'),
+(318, 20, 3, 0, 0, 0, 0,'comptoir', '2023/05/24'),
+(319, 21, 3, 0, 0, 0, 0,'comptoir', '2023/05/24'),
+(321, 23, 3, 0, 0, 0, 0,'magasin', '2023/05/24'),
+(322, 24, 3, 0, 0, 0, 0,'comptoir', '2023/05/24');
 
--- --------------------------------------------------------
-
---
--- Structure de la table `tsb_stocks_history`
---
-
-CREATE TABLE `tsb_stocks_history` (
-  `st_id` int(10) NOT NULL,
-  `pr_id_fk` int(10) NOT NULL,
-  `fo_id` int(10) NOT NULL,
-  `st_quantite` int(10) NOT NULL,
-  `st_date` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Déchargement des données de la table `tsb_stocks_history`
---
-
-INSERT INTO `tsb_stocks_history` (`st_id`, `pr_id_fk`, `fo_id`, `st_quantite`, `st_date`) VALUES
-(31, 1, 3, 70, '2023/04/13'),
-(32, 2, 3, 50, '2023/04/13'),
-(33, 3, 3, 50, '2023/04/13'),
-(34, 6, 3, 100, '2023/04/13'),
-(35, 10, 3, 100, '2023/04/13'),
-(36, 1, 3, 70, '2'),
-(37, 2, 3, 50, '2'),
-(38, 3, 3, 50, '2'),
-(39, 6, 3, 100, '2'),
-(40, 10, 3, 100, '2'),
-(41, 1, 3, 70, '2'),
-(42, 2, 3, 50, '2'),
-(43, 3, 3, 50, '2'),
-(44, 6, 3, 100, '2'),
-(45, 10, 3, 100, '2'),
-(46, 1, 3, 70, '2'),
-(47, 2, 3, 50, '2'),
-(48, 3, 3, 50, '2'),
-(49, 6, 3, 100, '2'),
-(50, 10, 3, 100, '2'),
-(51, 1, 3, 70, '2'),
-(52, 2, 3, 50, '2'),
-(53, 3, 3, 50, '2'),
-(54, 6, 3, 100, '2'),
-(55, 10, 3, 100, '2'),
-(56, 1, 3, 70, '2');
-
--- --------------------------------------------------------
+-- -------------------------------------------------------
 
 --
 -- Structure de la table `tsb_users`
@@ -268,7 +197,8 @@ CREATE TABLE `tsb_users` (
 INSERT INTO `tsb_users` (`us_id`, `us_name`, `us_phone`, `us_password`, `us_type`,`us_Dateimpots`, `us_status`) VALUES
 (6, 'POUM', '656064153', 'b1d5781111d84f7b3fe45a0852e59758cd7a87e5', 'Admin', '2023-08-08', 'Active'),
 (18, 'Pauline', '656064154', 'b1d5781111d84f7b3fe45a0852e59758cd7a87e5', 'Service','2023-08-08','Active'),
-(19, 'Anita', '656064155', 'b1d5781111d84f7b3fe45a0852e59758cd7a87e5', 'Caisse', '2023-08-08', 'Active');
+(19, 'Valdez', '656064155', 'b1d5781111d84f7b3fe45a0852e59758cd7a87e5', 'Magasinier','2023-08-08','Active'),
+(20, 'Anita', '656064156', 'b1d5781111d84f7b3fe45a0852e59758cd7a87e5', 'Caisse', '2023-08-08', 'Active');
 
 --
 -- Index pour les tables déchargées
@@ -304,12 +234,6 @@ ALTER TABLE `tsb_stocks`
   ADD KEY `fk_st_pr_kf` (`pr_id_fk`);
 
 --
--- Index pour la table `tsb_stocks_history`
---
-ALTER TABLE `tsb_stocks_history`
-  ADD PRIMARY KEY (`st_id`),
-  ADD KEY `fk_st_fo` (`fo_id`),
-  ADD KEY `fk_st_pr_kf` (`pr_id_fk`);
 
 --
 -- Index pour la table `tsb_users`
@@ -345,11 +269,6 @@ ALTER TABLE `tsb_produits`
 ALTER TABLE `tsb_stocks`
   MODIFY `st_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=323;
 
---
--- AUTO_INCREMENT pour la table `tsb_stocks_history`
---
-ALTER TABLE `tsb_stocks_history`
-  MODIFY `st_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT pour la table `tsb_users`
@@ -377,12 +296,6 @@ CREATE TABLE Ristourne(
     FOREIGN KEY(`st_id`) REFERENCES `tsb_stocks`(`st_id`)
 )ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-
-CREATE TABLE Historique_ristourne(
-  `idRistourne` VARCHAR(50) NOT NULL,
-  PRIMARY KEY(`idRistourne`),
-  FOREIGN KEY(`idRistourne`) REFERENCES `Ristourne`(`idRistourne`)
-)ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
