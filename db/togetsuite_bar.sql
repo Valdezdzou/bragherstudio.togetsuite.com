@@ -197,7 +197,7 @@ CREATE TABLE `tsb_users` (
 INSERT INTO `tsb_users` (`us_id`, `us_name`, `us_phone`, `us_password`, `us_type`,`us_Dateimpots`, `us_status`) VALUES
 (6, 'POUM', '656064153', 'b1d5781111d84f7b3fe45a0852e59758cd7a87e5', 'Admin', '2023-08-08', 'Active'),
 (18, 'Pauline', '656064154', 'b1d5781111d84f7b3fe45a0852e59758cd7a87e5', 'Service','2023-08-08','Active'),
-(19, 'Valdez', '656064155', 'b1d5781111d84f7b3fe45a0852e59758cd7a87e5', 'Magasinier','2023-08-08','Active'),
+(19, 'Valdez', '656064155', 'b1d5781111d84f7b3fe45a0852e59758cd7a87e5', 'magasinier','2023-08-08','Active'),
 (20, 'Anita', '656064156', 'b1d5781111d84f7b3fe45a0852e59758cd7a87e5', 'Caisse', '2023-08-08', 'Active');
 
 --

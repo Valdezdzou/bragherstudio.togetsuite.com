@@ -63,7 +63,7 @@
                                 <option value="Admin">Administration</option>
                                 <option value="Caisse">Caisse</option>
                                 <option value="Service">Service</option>
-                                <option value="Service">Magasinier</option>
+                                <option value="magasinier">magasinier</option>
                             </select>
                         </div>
                     </div>

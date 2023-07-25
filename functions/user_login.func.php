@@ -36,7 +36,7 @@
             $_SESSION['togetsuite_bar']['us_phone'] = $us_phone;
             echo "<script type='text/javascript'>document.location.replace('../account/service/');</script>";
             exit();	
-        } else if($result->us_type=="Magasinier" and $result->us_phone==$us_phone){
+        } else if($result->us_type=="magasinier" and $result->us_phone==$us_phone){
             $_SESSION['togetsuite_bar']['us_phone'] = $us_phone;
             echo "<script type='text/javascript'>document.location.replace('../account/magasinier/');</script>";
             exit();

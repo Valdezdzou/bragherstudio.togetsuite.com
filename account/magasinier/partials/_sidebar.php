@@ -33,9 +33,9 @@
             </li>
 
             <li>
-                <a href="http://localhost/bragherstudio.togetsuite.com/pages/bar_etat_stock.php" class="item">
+                <a href="http://localhost/bragherstudio.togetsuite.com/account/magasinier/pages/bar_etat_stock.php" class="item">
                     <div class="icon-box bg-primary">
-                        <ion-icon name="cube-outline"></ion-icon>
+                         <ion-icon name="storefront-outline"></ion-icon>
                     </div>
                     <div class="in">
                         Etat Stock
@@ -44,9 +44,9 @@
             </li>
 
             <li>
-                <a href="http://localhost/bragherstudio.togetsuite.com/pages/stock_app_caisse.php" class="item">
+                <a href="http://localhost/bragherstudio.togetsuite.com/account/magasinier/pages/stock_app_caisse.php" class="item">
                     <div class="icon-box bg-primary">
-                        <ion-icon name="cube-outline"></ion-icon>
+                        <ion-icon name="cart-outline"></ion-icon>
                     </div>
                     <div class="in">
                         Approvisionnement Comptoir
@@ -55,9 +55,9 @@
             </li>
 
             <li>
-                <a href="http://localhost/bragherstudio.togetsuite.com/pages/stock_app_magasin.php" class="item">
+                <a href="http://localhost/bragherstudio.togetsuite.com/account/magasinier/pages/stock_app_magasin.php" class="item">
                     <div class="icon-box bg-primary">
-                        <ion-icon name="cube-outline"></ion-icon>
+                        <ion-icon name="cart-outline"></ion-icon>
                     </div>
                     <div class="in">
                         Approvisionnement Magasin
@@ -66,9 +66,9 @@
             </li>
 
             <li>
-                <a href="http://localhost/bragherstudio.togetsuite.com/pages/historique_stock.php" class="item">
+                <a href="http://localhost/bragherstudio.togetsuite.com/account/magasinierpages/historique_stock.php" class="item">
                     <div class="icon-box bg-primary">
-                        <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+                        <ion-icon name="reload-outline"></ion-icon>
                     </div>
                     <div class="in">
                         <div>Historiques Stock</div>

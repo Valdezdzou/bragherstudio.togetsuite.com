@@ -92,9 +92,9 @@
         <!-- App Capsule -->
         <div id="appCapsule">
 
-            <div class="header-large-title">
-                <h1 class="title">BAR</h1>
-                <h4 class="subtitle">Bienvenue sur TogetSuite BAR</h4>
+            <div class="header-large-title" style="text-align: center">
+                <h2 class="title">BAR</h2>
+                <h3 class="subtitle">Bienvenue sur TogetSuite BAR</h3>
             </div>
 
 
@@ -104,9 +104,9 @@
             <ul class="listview image-listview flush transparent">
 
                 <li>
-                    <a href="./pages/commande_add.php" class="item">
+                    <a href="./pages/bar_etat_stock.php" class="item">
                         <div class="icon-box bg-primary">
-                            <ion-icon name="person-add-outline"></ion-icon>
+                            <ion-icon name="storefront-outline"></ion-icon>
                         </div>
                         <div class="in">
                             Etat stock
@@ -115,9 +115,9 @@
                 </li>
 
                 <li>
-                    <a href="./pages/commande_add.php" class="item">
+                    <a href="./pages/historique_stock.php" class="item">
                         <div class="icon-box bg-primary">
-                            <ion-icon name="person-add-outline"></ion-icon>
+                            <ion-icon name="reload-outline"></ion-icon>
                         </div>
                         <div class="in">
                             Historiques Stock
@@ -126,9 +126,9 @@
                 </li>
 
                 <li>
-                    <a href="./pages/commande_add.php" class="item">
+                    <a href="./pages/stock_initialize.php" class="item">
                         <div class="icon-box bg-primary">
-                            <ion-icon name="person-add-outline"></ion-icon>
+                            <ion-icon name="sync-outline"></ion-icon>
                         </div>
                         <div class="in">
                             Initialiser le stock a zero
@@ -144,9 +144,9 @@
             <ul class="listview image-listview flush transparent">
 
                 <li>
-                    <a href="./pages/facture_open.php" class="item">
+                    <a href="./pages/stock_app_magasin.php" class="item">
                         <div class="icon-box bg-danger">
-                            <ion-icon name="person-add-outline"></ion-icon>
+                            <ion-icon name="cart-outline"></ion-icon>
                         </div>
                         <div class="in">
                             Approvisionnement magasin
@@ -154,9 +154,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="./pages/facture_open.php" class="item">
+                    <a href="./pages/stock_app_caisse.php" class="item">
                         <div class="icon-box bg-danger">
-                            <ion-icon name="person-add-outline"></ion-icon>
+                            <ion-icon name="cart-outline"></ion-icon>
                         </div>
                         <div class="in">
                         Approvisionnement Comptoir
