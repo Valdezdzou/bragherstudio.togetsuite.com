@@ -35,7 +35,7 @@
             <li>
                 <a href="http://localhost/bragherstudio.togetsuite.com/account/service/pages/commande_add.php" class="item">
                     <div class="icon-box bg-primary">
-                        <ion-icon name="cube-outline"></ion-icon>
+                        <ion-icon name="bag-outline"></ion-icon>
                     </div>
                     <div class="in">
                         Commandes
@@ -46,7 +46,7 @@
             <li>
                 <a href="http://localhost/bragherstudio.togetsuite.com/account/service/pages/facture_open.php" class="item">
                     <div class="icon-box bg-primary">
-                        <ion-icon name="layers-outline"></ion-icon>
+                        <ion-icon name="receipt-outline"></ion-icon>
                     </div>
                     <div class="in">
                         <div>Factures</div>
@@ -83,7 +83,7 @@
         <a href="#" class="button">
             <ion-icon name="settings-outline"></ion-icon>
         </a> -->
-        <a href="http://localhost:8080/bragherstudio.togetsuite.com/pages/user_logout.php" class="button">
+        <a href="http://localhost/bragherstudio.togetsuite.com/pages/user_logout.php" class="button">
             <ion-icon name="log-out-outline"></ion-icon>
         </a>
     </div>

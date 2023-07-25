@@ -4,7 +4,7 @@
 
 	if (isLogged() == 0) {
 		 echo "
-        <script type='text/javascript'>document.location.replace('http://localhost:8080/bragherstudio.togetsuite.com/pages/user_login.php');</script>";
+        <script type='text/javascript'>document.location.replace('http://localhost/bragherstudio.togetsuite.com/pages/user_login.php');</script>";
         exit();	
 	}
 ?>
@@ -90,13 +90,13 @@
         <!-- App Capsule -->
         <div id="appCapsule">
 
-            <div class="header-large-title">
+            <div class="header-large-title" style="text-align:center">
                 <h1 class="title">BAR</h1>
                 <h4 class="subtitle">Bienvenue sur TogetSuite BAR</h4>
             </div>
 
             <div class="listview-title mt-2">
-                <h3>Factures</h3>
+                <h2>Factures</h2>
             </div>
             <ul class="listview image-listview flush transparent">
 
@@ -104,7 +104,7 @@
                 <li>
                     <a href="./pages/facture_close.php" class="item">
                         <div class="icon-box bg-primary">
-                            <ion-icon name="people-outline"></ion-icon>
+                           <ion-icon name="checkmark-circle-outline"></ion-icon>
                         </div>
                         <div class="in">
                             Factures clôturées
@@ -115,7 +115,7 @@
                 <li>
                     <a href="./pages/facture_print.php" class="item">
                         <div class="icon-box bg-primary">
-                            <ion-icon name="person-add-outline"></ion-icon>
+                            <ion-icon name="receipt-outline"></ion-icon>
                         </div>
                         <div class="in">
                             Tickets /Impréssions

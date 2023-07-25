@@ -5,7 +5,7 @@
 
 	if (isLogged() == 0) {
 		 echo "
-        <script type='text/javascript'>document.location.replace('http://localhost:8080/bragherstudio.togetsuite.com/pages/user_login.php');</script>";
+        <script type='text/javascript'>document.location.replace('http://localhost/bragherstudio.togetsuite.com/pages/user_login.php');</script>";
         exit();	
 	}
 ?>

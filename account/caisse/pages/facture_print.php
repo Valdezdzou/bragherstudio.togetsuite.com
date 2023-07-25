@@ -14,13 +14,12 @@
 <?php
     use Phppot\DataSource;
     use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
-
+    
     require_once '../../../functions/config.php';
     require_once '../../../functions/DataSource.php';
     $bdd = new DataSource();
     $conn = $bdd->getConnection();
     //require_once ('functions/vendor/autoload.php');
-    $recherche = $_GET['recherche'];
 
 ?>
 
@@ -73,7 +72,7 @@
 
         <!-- Search Component -->
         <div id="search" class="appHeader">
-            <form class="search-form" method="GET" action="facture_print.php">
+            <form class="search-form" method="GET" action="facture_rech.php">
                 <div class="form-group searchbox">
                     <input type="search" class="form-control"  name="recherche" placeholder="Search...">
                     <i class="input-icon">
@@ -100,18 +99,9 @@
            
             <ul class="listview image-listview">
 
-            <?php  
-               if( empty($recherche)){
-                
-                
-               }
-               else{
-
-               }
-            ?>
+    
 
             <?php
-                if ( empty($recherche)){
                     $sqlSelect = "SELECT DISTINCT 
                                         fa_client,
                                         fa_code,
@@ -130,28 +120,6 @@
                                         fa_phone";
 
                     $result = $bdd->selectEtu($sqlSelect);
-                }
-                else{
-                    $sqlSelect = "SELECT DISTINCT 
-                    fa_client,
-                    fa_code,
-                    fa_phone,
-                    fa_Date,
-                    us_name, 
-                    SUM(pr_prix_vente*fa_quantite) AS prix 
-                FROM 
-                    tsb_factures 
-                WHERE 
-                    fa_status='Pay' and fa_code='$recherche'
-                GROUP BY 
-                    fa_client,
-                    fa_code,
-                    fa_Date,
-                    fa_phone";
-
-                $result = $bdd->selectEtu($sqlSelect);
-
-                }
             ?>
                 <?php
                     if (! empty($result)) {

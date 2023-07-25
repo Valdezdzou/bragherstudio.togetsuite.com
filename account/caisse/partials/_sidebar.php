@@ -4,7 +4,7 @@
         <!-- profile box -->
         <div class="profileBox">
             <div class="image-wrapper">
-                <img src="http://localhost:8080/bragherstudio.togetsuite.com/assets/img/logo.png" alt="image" class="imaged rounded">
+                <img src="http://localhost/bragherstudio.togetsuite.com/assets/img/logo.png" alt="image" class="imaged rounded">
             </div>
         
             <div class="in">
@@ -22,7 +22,7 @@
 
         <ul class="listview flush transparent no-line image-listview mt-2">
             <li>
-                <a href="http://localhost:8080/bragherstudio.togetsuite.com/account/caisse/index.php" class="item">
+                <a href="http://localhost/bragherstudio.togetsuite.com/account/caisse/index.php" class="item">
                     <div class="icon-box bg-primary">
                         <ion-icon name="home-outline"></ion-icon>
                     </div>
@@ -34,9 +34,9 @@
 
 
             <li>
-                <a href="http://localhost:8080/bragherstudio.togetsuite.com/account/caisse/pages/facture_close.php" class="item">
+                <a href="http://localhost/bragherstudio.togetsuite.com/account/caisse/pages/facture_close.php" class="item">
                     <div class="icon-box bg-primary">
-                        <ion-icon name="clipboard"></ion-icon>
+                        <ion-icon name="checkmark-circle-outline"></ion-icon>
                     </div>
                     <div class="in">
                         <div>Factures clôturées</div>
@@ -45,9 +45,9 @@
             </li>
 
             <li>
-                <a href="http://localhost:8080/bragherstudio.togetsuite.com/account/caisse/pages/facture_print.php" class="item">
+                <a href="http://localhost/bragherstudio.togetsuite.com/account/caisse/pages/facture_print.php" class="item">
                     <div class="icon-box bg-primary">
-                        <ion-icon name="cube-outline"></ion-icon>
+                        <ion-icon name="receipt-outline"></ion-icon>
                     </div>
                     <div class="in">
                         Tickets /Impréssions
@@ -75,16 +75,7 @@
     </div>
     <!-- sidebar buttons -->
     <div class="sidebar-buttons">
-        <a href="#" class="button">
-            <ion-icon name="person-outline"></ion-icon>
-        </a>
-        <a href="#" class="button">
-            <ion-icon name="archive-outline"></ion-icon>
-        </a>
-        <a href="#" class="button">
-            <ion-icon name="settings-outline"></ion-icon>
-        </a>
-        <a href="http://localhost:8080/bragherstudio.togetsuite.com/pages/user_logout.php" class="button">
+        <a href="http://localhost/bragherstudio.togetsuite.com/pages/user_logout.php" class="button">
             <ion-icon name="log-out-outline"></ion-icon>
         </a>
     </div>

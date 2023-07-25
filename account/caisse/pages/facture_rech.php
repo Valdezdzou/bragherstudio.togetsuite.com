@@ -14,14 +14,19 @@
 <?php
     use Phppot\DataSource;
     use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
-
+    
     require_once '../../../functions/config.php';
     require_once '../../../functions/DataSource.php';
     $bdd = new DataSource();
     $conn = $bdd->getConnection();
     //require_once ('functions/vendor/autoload.php');
 
+    $recherche = $_GET['recherche'];
+    
+
 ?>
+
+
 
 <!doctype html>
 <html lang="en">
@@ -70,9 +75,9 @@
 
         <!-- Search Component -->
         <div id="search" class="appHeader">
-            <form class="search-form">
+            <form class="search-form" method="GET" action="facture_print.php">
                 <div class="form-group searchbox">
-                    <input type="text" class="form-control" placeholder="Search...">
+                    <input type="search" class="form-control"  name="recherche" placeholder="Search...">
                     <i class="input-icon">
                         <ion-icon name="search-outline"></ion-icon>
                     </i>
@@ -88,63 +93,69 @@
         <div id="appCapsule">
 
             <div class="header-large-title">
-                <h1 class="title">Factures cloturées</h1>
+                <h1 class="title">Tickets /Impréssions</h1>
             </div>
 
 
-            <div class="listview-title mt-2">Toute les factures  <code> </code> <?php echo $total_factures_pay;?> XAF réglé</div>
+            <div class="listview-title mt-2">Liste Tickets /Impréssions  <code> </code> </div>
             
            
             <ul class="listview image-listview">
 
-                <?php
+    
+
+            <?php
                     $sqlSelect = "SELECT DISTINCT 
-                                        fa_client,
-                                        fa_code,
-                                        fa_phone, 
-                                        SUM(pr_prix_vente*fa_quantite) AS prix 
-                                    FROM 
-                                        tsb_factures 
-                                    WHERE 
-                                        fa_status='Close' 
-                                    GROUP BY 
-                                        fa_client,
-                                        fa_code,
-                                        fa_phone";
+                    fa_client,
+                    fa_code,
+                    fa_phone,
+                    fa_Date,
+                    us_name, 
+                    SUM(pr_prix_vente*fa_quantite) AS prix 
+                FROM 
+                    tsb_factures 
+                WHERE 
+                    fa_status='Pay' and fa_code='$recherche'
+                GROUP BY 
+                    fa_client,
+                    fa_code,
+                    fa_Date,
+                    fa_phone";
 
-                    $result = $bdd->selectEtu($sqlSelect);
+                $result = $bdd->selectEtu($sqlSelect);
+            ?>
+                <?php
                     if (! empty($result)) {
-
-                        foreach ($result as $row) {
+                         foreach ($result as $row) {
                 ?>
+                            <li>
+                                <div class="item">
+                                        <div class="in">
+                                                 <div>
+                                                     Client: <?php  echo $row['fa_client']; ?> <br>
+                                                     Montant: <code><?php  echo $row['prix']; ?> XAF</code>
+                                                     <p class=" text-muted">
+                                                            facture: <?php  echo $row['fa_code']; ?><br>
+                                                            caissier(e) : <?php  echo $row['us_name']; ?> <br>
+                                                            Date: <?php  echo $row['fa_Date']; ?>
+                                                     </p>
+                    
+                                                     <input type="hidden" name="fa_client_pay_no_print"  value="<?php  echo $row['fa_client']; ?>">
+                                                 </div>
 
-                <li>
-                    <div class="item">
-                        <div class="in">
-                            <div>
-                                <?php  echo $row['fa_client']; ?>, Tel : <?php  echo $row['fa_phone']; ?> <br>
-                                <code><?php  echo $row['prix']; ?> XAF</code>
-                                <p class=" text-muted">
-                                    <?php  echo $row['fa_code']; ?>
-                                </p>
-                                <input type="hidden" name="fa_client_pay_no_print"  value="<?php  echo $row['fa_client']; ?>">
-                            </div>
+                                                 <span class="badge badge-danger">
+                                                     <a href="facture_pdf.php?fa_code=<?php echo $row['fa_code']; ?>&fa_Date=<?php echo $row['fa_Date']; ?>&us_name=<?php echo $row['us_name']; ?>" class="btn"  style="color:#fff">
+                                                         Imprimer
+                                                      </a>
+                                                  </span>
+                                         </div>
+                                 </div>
 
-                            <span class="badge badge-danger">
-                                
-                                <a href="<?php echo "facture_pay.php?fa_code=$row[fa_code]";?>" class="btn"  style="color:#fff">
-                                    Payé
-                                </a>
-                            </p>
-                            
-                            
-                        </div>
-                    </div>
+                            </li>
 
-                </li>
-
-
-                <?php } } else {?>  
+                <?php } }
+                
+                else {?>  
                     <div class="error-page">
                         <div class="icon-box text-danger">
                             <ion-icon name="alert-circle"></ion-icon>

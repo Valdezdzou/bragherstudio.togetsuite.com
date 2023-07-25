@@ -35,7 +35,7 @@
             <li>
                 <a href="http://localhost/bragherstudio.togetsuite.com/pages/bar_manage.php" class="item">
                     <div class="icon-box bg-primary">
-                        <ion-icon name="cube-outline"></ion-icon>
+                        <ion-icon name="calendar-outline"></ion-icon>
                     </div>
                     <div class="in">
                         Gestion
@@ -46,7 +46,7 @@
             <li>
                 <a href="http://localhost/bragherstudio.togetsuite.com/pages/bar_etat.php" class="item">
                     <div class="icon-box bg-primary">
-                        <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+                        <ion-icon name="storefront-outline"></ion-icon>
                     </div>
                     <div class="in">
                         <div>Etats</div>
