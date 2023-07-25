@@ -80,7 +80,7 @@
         </div>
 
         <div class="section mt-2">
-            <a href="http://localhost:8080/bragherstudio.togetsuite.com/pages/bar_etat_stock.php">
+            <a href="http://localhost/bragherstudio.togetsuite.com/pages/bar_etat_stock.php">
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Stocks magasin</h5>
