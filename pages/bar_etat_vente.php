@@ -5,27 +5,13 @@
 
 	if (isLogged() == 0) {
 		 echo "
-        <script type='text/javascript'>document.location.replace('http://localhost:8080/bragherstudio.togetsuite.com/pages/user_login.php');</script>";
+        <script type='text/javascript'>document.location.replace('http://localhost/bragherstudio.togetsuite.com/pages/user_login.php');</script>";
         exit();	
 	}
 ?>
 
 
-<?php
-    //Total factures 
-    //$fa_code = $_GET['fa_code'];
 
-    $stmt = $bdd->query("
-                        SELECT 
-                            SUM(pr_prix_vente * fa_quantite) AS total_pay
-                        FROM 
-                            tsb_factures
-                        WHERE
-                            fa_status='Pay'");
-    while ($data = $stmt->fetch(PDO::FETCH_OBJ)) {
-        $total_pay = $data->total_pay;
-    }
-?>
 
 <?php
     use Phppot\DataSource;
@@ -62,7 +48,7 @@
         <link rel="manifest" href="../_manifest.json">
     </head>
 
-    <body class="bg-white">
+    <body class="bg-white" onload="updateData()">
 
         <!-- loader -->
         <div id="loader">
@@ -104,6 +90,23 @@
         </div>
         <!-- * Search Component -->
 
+        <script>
+            function updateData() {
+                console.log("OK!");
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("invoiceList").innerHTML = this.responseText;
+                    }
+                };
+                var selectedDate = document.getElementById("date").value;
+                if (selectedDate == "") {
+                    selectedDate = new Date().toISOString().slice(0,10);
+                }
+                xhttp.open("GET", "../functions/get_factures.php?date=" + selectedDate, true);
+                xhttp.send();
+            }
+        </script>
         <!-- App Capsule -->
         <div id="appCapsule">
 
@@ -111,83 +114,20 @@
                 <h1 class="title">Toutes les ventes</h1>
             </div>
 
-            <form action="" method="post">
+            <form action="" method="post" id="Filter_fact">
                 <div class="listview-title mt-2">Ventes par clients  
+                    <span> 
+                        <label for="date">Sélectionnez une date :</label>
+                        <input type="date" value="<?php echo date('Y-m-d'); ?>"id="date" name="date" onchange="updateData()">
+                    </span> 
                     <code> 
-                        <input type="text" value="<?php echo date("Y/m/d"); ?>"> 
                         <a href="./bar_etat_vente_print.php">Exporter</a>
                     </code> 
                 </div>
             </form> 
-           
-            <ul class="listview image-listview">
 
-                <?php
-                    $sqlSelect = "SELECT DISTINCT 
-                                        fa_client,
-                                        fa_code,
-                                        fa_phone, 
-                                        SUM(pr_prix_vente*fa_quantite) AS prix 
-                                    FROM 
-                                        tsb_factures 
-                                    WHERE 
-                                        fa_status='Pay' 
-                                    GROUP BY 
-                                        fa_client,
-                                        fa_code,
-                                        fa_phone";
+            <ul class="listview image-listview" id="invoiceList">
 
-                    $result = $bdd->selectEtu($sqlSelect);
-                    if (! empty($result)) {
-
-                        foreach ($result as $row) {
-                ?>
-
-                <li>
-                    <div class="item">
-                        <div class="in">
-                            <div>
-                                <?php  echo $row['fa_client']; ?>, Tel : <?php  echo $row['fa_phone']; ?> <br>
-                                <code><?php  echo $row['prix']; ?> XAF</code>
-                                <p class=" text-muted">
-                                    <?php  echo $row['fa_code']; ?>
-                                </p>
-                                <input type="hidden" name="fa_client_pay_no_print"  value="<?php  echo $row['fa_client']; ?>">
-                            </div>
-
-                            <span class="badge badge-danger">
-                                
-                                <a href="<?php echo "bar_etat_vente_detail.php?fa_code=$row[fa_code]";?>" class="btn"  style="color:#fff">
-                                    Voir
-                                </a>
-                            </p>
-                            
-                            
-                        </div>
-                    </div>
-
-                </li>
-
-                
-
-
-                <?php } } else {?>  
-
-
-                    
-                    <div class="error-page">
-                        <div class="icon-box text-danger">
-                            <ion-icon name="alert-circle"></ion-icon>
-                        </div>
-                        <h2 class="title">Aucune facture cloturée</h2>
-                    </div>
-                
-                <?php }?>
-
-                <div class="listview-title mt-2 badge-primary" style="color:#fff"><code></code> <?php echo $total_pay;?> XAF</div>
-
-            
-            
             </ul>
 
             <!-- Dialog Basic -->
@@ -214,7 +154,6 @@
 
         </div>
         <!-- * App Capsule -->
-
         <!-- * App Capsule -->
 
         <!-- App Bottom Menu -->

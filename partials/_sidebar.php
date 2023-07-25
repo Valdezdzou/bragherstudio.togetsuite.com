@@ -4,7 +4,7 @@
         <!-- profile box -->
         <div class="profileBox">
             <div class="image-wrapper">
-                <img src="http://localhost:8080/bragherstudio.togetsuite.com/assets/img/logo.png" alt="image" class="imaged rounded">
+                <img src="http://localhost/bragherstudio.togetsuite.com/assets/img/logo.png" alt="image" class="imaged rounded">
             </div>
         
             <div class="in">
@@ -22,7 +22,7 @@
 
         <ul class="listview flush transparent no-line image-listview mt-2">
             <li>
-                <a href="http://localhost:8080/bragherstudio.togetsuite.com/index.php" class="item">
+                <a href="http://localhost/bragherstudio.togetsuite.com/index.php" class="item">
                     <div class="icon-box bg-primary">
                         <ion-icon name="home-outline"></ion-icon>
                     </div>
@@ -33,7 +33,7 @@
             </li>
 
             <li>
-                <a href="http://localhost:8080/bragherstudio.togetsuite.com/pages/bar_manage.php" class="item">
+                <a href="http://localhost/bragherstudio.togetsuite.com/pages/bar_manage.php" class="item">
                     <div class="icon-box bg-primary">
                         <ion-icon name="cube-outline"></ion-icon>
                     </div>
@@ -44,7 +44,7 @@
             </li>
 
             <li>
-                <a href="http://localhost:8080/bragherstudio.togetsuite.com/pages/bar_etat.php" class="item">
+                <a href="http://localhost/bragherstudio.togetsuite.com/pages/bar_etat.php" class="item">
                     <div class="icon-box bg-primary">
                         <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
                     </div>
@@ -83,7 +83,7 @@
         <a href="#" class="button">
             <ion-icon name="settings-outline"></ion-icon>
         </a> -->
-        <a href="http://localhost:8080/bragherstudio.togetsuite.com/pages/user_logout.php" class="button">
+        <a href="http://localhost/bragherstudio.togetsuite.com/pages/user_logout.php" class="button">
             <ion-icon name="log-out-outline"></ion-icon>
         </a>
     </div>
