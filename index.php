@@ -109,8 +109,7 @@
                             FROM 
                                 tsb_stocks");
 
-                        foreach($query as $data)
-                        {
+                        foreach($query as $data){
                             $month[] = $data['pr_id_fk'];
                             $amount[] = $data['st_quantite'];
                         }

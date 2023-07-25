@@ -82,9 +82,12 @@
 
 
 
+<?php }?>
+
+
 <div class="listview-title mt-2 badge-primary" style="color:#fff"><code></code> <?php echo $total;?> XAF</div>
 
-<?php } } else {?>  
+<?php } else {?>  
 
 
     
