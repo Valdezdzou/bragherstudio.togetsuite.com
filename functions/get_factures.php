@@ -69,7 +69,7 @@
             <span class="badge badge-danger">
                 
                 <a href="<?php echo "bar_etat_vente_detail.php?fa_code=$row[fa_code]";?>" class="btn"  style="color:#fff">
-                    Voir
+                    details
                 </a>
             </p>
             
