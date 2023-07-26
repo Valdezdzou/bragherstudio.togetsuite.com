@@ -122,7 +122,7 @@
                                             </div>
                                             <span class="badge">
                                                 <input name="st_quantite[]" type="hidden" value="<?php  echo $row['st_quantite']; ?>">
-                                                <input name="st_prix_achat[]" type="number" style="width: 50px;" placeholder="Prix">
+                                                <input name="pr_prix_vente[]" type="number" style="width: 50px;" value="<?php  echo $row['pr_prix_vente']; ?>">
                                                 <input name="st_quantite_add[]" type="number" style="width: 40px;" placeholder="Qté">
                                             </span>
                                         </div>
@@ -164,7 +164,7 @@
                                             </div>
                                             <span class="badge">
                                                 <input name="st_quantite[]" type="hidden" value="<?php  echo $row['st_quantite']; ?>">
-                                                <input name="st_prix_achat[]" type="number" style="width: 50px;" placeholder="Prix">
+                                                <input name="pr_prix_vente[]" type="number" style="width: 50px;" value="<?php  echo $row['pr_prix_vente']; ?>">
                                                 <input name="st_quantite_add[]" type="number" style="width: 40px;" placeholder="Qté">
                                             </span>
                                         </div>
@@ -207,7 +207,7 @@
                                             </div>
                                             <span class="badge">
                                                 <input name="st_quantite[]" type="hidden" value="<?php  echo $row['st_quantite']; ?>">
-                                                <input name="st_prix_achat[]" type="number" style="width: 50px;" placeholder="Prix">
+                                                <input name="pr_prix_vente[]" type="number" style="width: 50px;" value="<?php  echo $row['pr_prix_vente']; ?>">
                                                 <input name="st_quantite_add[]" type="number" style="width: 40px;" placeholder="Qté">
                                             </span>
                                         </div>

@@ -21,7 +21,10 @@
     $conn = $bdd->getConnection();
     //require_once ('functions/vendor/autoload.php');
 
-    $recherche = $_GET['recherche'];
+    if (! empty($_GET['recherche'])){
+        $recherche = $_GET['recherche'];
+    }
+    
     
 
 ?>

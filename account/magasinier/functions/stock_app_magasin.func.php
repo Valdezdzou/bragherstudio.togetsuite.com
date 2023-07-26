@@ -21,8 +21,12 @@
                 // Stock magasin : updates : st_quantite, st_prix_achat, fo_id, st_date
                 //Mise à jour des stocks
                 $total_add_magasin = ((int)$st_quantite[$i]+(int)$st_quantite_add[$i]);
-                $sql = "UPDATE tsb_stocks SET st_quantite = ? WHERE pr_id_fk = ?";
-                $bdd->prepare($sql)->execute([$total_add_magasin, $pr_id_fk[$i]]);
+
+                $sql= "INSERT INTO `tsb_stocks` (`st_id`, `pr_id_fk`, `fo_id`, `st_quantite`, `stc_quantite`, `stc_quantite_vente`, `st_prix_achat`,`st_status`, `st_date`) VALUES
+                (?,?,?,?,?,?,?,?)";
+
+                $bdd->prepare($sql)->execute([$st_id[$i], $pr_id_fk[$i], $fo_id[$i], $st_quantite[$i], 0, 0, (int)$st_prix_achat[$i], 'comptoir', $st_date[$i]]);
+
 
                 //Mise à jour des prix
                 $prix_achat_magasin = (int)$st_prix_achat[$i];

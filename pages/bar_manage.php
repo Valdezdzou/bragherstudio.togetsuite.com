@@ -26,6 +26,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/icon/192x192.png">
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="manifest" href="../__manifest.json">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body class="bg-white">
@@ -73,7 +74,7 @@
     <!-- App Capsule -->
     <div id="appCapsule">
 
-        <div class="header-large-title">
+        <div class="header-large-title" style="text-align:center">
             <h1 class="title">Gestion</h1>
         </div>
 
@@ -108,7 +109,7 @@
             <li>
                 <a href="../pages/fournisseur_add.php" class="item">
                     <div class="icon-box bg-warning">
-                        <ion-icon name="list-outline"></ion-icon>
+                        <i class="fa-solid fa-truck-medical fa-xs" style="color: #ffffff;"></i>
                     </div>
                     <div class="in">
                         Ajouter un fournisseur
@@ -118,7 +119,7 @@
             <li>
                 <a href="../pages/fournisseur_list.php" class="item">
                     <div class="icon-box bg-warning">
-                        <ion-icon name="filter-outline"></ion-icon>
+                        <i class="fa-sharp fa-solid fa-truck fa-xs" style="color: #ffffff;"></i>
                     </div>
                     <div class="in">
                         Tous les fornisseurs
@@ -159,23 +160,13 @@
             <li>
                 <a href="../pages/bar_etat_stock.php" class="item">
                     <div class="icon-box bg-success">
-                        <ion-icon name="download-outline"></ion-icon>
+                        <ion-icon name="storefront-outline"></ion-icon>
                     </div>
                     <div class="in">
                         Etat des stocks
                     </div>
                 </a>
             </li>   
-            <li>
-                <a href="../pages/stock_app_magasin.php" class="item">
-                    <div class="icon-box bg-success">
-                        <ion-icon name="download-outline"></ion-icon>
-                    </div>
-                    <div class="in">
-                        Approvisionnement 
-                    </div>
-                </a>
-            </li>  
         </ul>
 
         <div class="listview-title mt-2">Historiques</div>

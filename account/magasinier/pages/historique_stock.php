@@ -104,7 +104,7 @@
                                    <div class="item">
                                           <div class="in">
                                              <div>
-                                                  <h3>Date</h3>
+                                                  <h3>Dates</h3>
                                              </div>
                                              <div>
                                                   <h3>Q.avant</h3>

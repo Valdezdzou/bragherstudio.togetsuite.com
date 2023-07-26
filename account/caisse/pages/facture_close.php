@@ -60,30 +60,7 @@
             <div class="pageTitle">
                 Components
             </div>
-            <div class="right">
-                <a href="#" class="headerButton toggle-searchbox">
-                    <ion-icon name="search-outline"></ion-icon>
-                </a>
-            </div>
         </div>
-        <!-- * App Header -->
-
-        <!-- Search Component -->
-        <div id="search" class="appHeader">
-            <form class="search-form">
-                <div class="form-group searchbox">
-                    <input type="text" class="form-control" placeholder="Search...">
-                    <i class="input-icon">
-                        <ion-icon name="search-outline"></ion-icon>
-                    </i>
-                    <a href="#" class="ms-1 close toggle-searchbox">
-                        <ion-icon name="close-circle"></ion-icon>
-                    </a>
-                </div>
-            </form>
-        </div>
-        <!-- * Search Component -->
-
         <!-- App Capsule -->
         <div id="appCapsule">
 
@@ -92,10 +69,11 @@
             </div>
 
 
-            <div class="listview-title mt-2">Toute les factures  <code> </code> <?php echo $total_factures_pay;?> XAF réglé</div>
+            <div class="listview-title mt-2">Toutes les factures  <code> </code> <?php echo $total_factures_pay;?> XAF réglé</div>
             
            
             <ul class="listview image-listview">
+                
 
                 <?php
                     $sqlSelect = "SELECT DISTINCT 

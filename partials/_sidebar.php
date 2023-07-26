@@ -50,7 +50,6 @@
                     </div>
                     <div class="in">
                         <div>Etats</div>
-                        <span class="badge badge-danger">5</span>
                     </div>
                 </a>
             </li>

@@ -60,7 +60,7 @@
                     <div class="item">
                         <ion-icon name="beer-outline"  class="image"></ion-icon>
                         <div class="in">
-                            <div>Toute les ventes</div>
+                            <div>Toutes les ventes</div>
                             <span class="text-muted">Voir</span>
                         </div>
                     </div>

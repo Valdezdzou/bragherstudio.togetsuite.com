@@ -6,13 +6,13 @@
     </a>
     <a href="http://localhost/bragherstudio.togetsuite.com/pages/bar_manage.php" class="item">
         <div class="col">
-            <ion-icon name="cube-outline"></ion-icon>
+             <ion-icon name="calendar-outline"></ion-icon>
         </div>
     </a>
     
     <a href="http://localhost/bragherstudio.togetsuite.com/pages/produit_list.php" class="item">
         <div class="col">
-            <ion-icon name="layers-outline"></ion-icon>
+            <ion-icon name="storefront-outline"></ion-icon>
         </div>
     </a>
     <a href="#sidebarPanel" class="item" data-bs-toggle="offcanvas">

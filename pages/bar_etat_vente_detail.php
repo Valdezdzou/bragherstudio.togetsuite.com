@@ -11,23 +11,7 @@
 ?>
 
 
-<?php
-    //Total factures 
-    $fa_code = $_GET['fa_code'];
 
-    $stmt = $bdd->query("
-                        SELECT 
-                            SUM(pr_prix_vente * fa_quantite) AS total_pay
-                        FROM 
-                            tsb_factures
-                        WHERE
-                            fa_status='Pay'
-                        AND     
-                            fa_code=$fa_code");
-    while ($data = $stmt->fetch(PDO::FETCH_OBJ)) {
-        $total_pay = $data->total_pay;
-    }
-?>
 
 
 <?php
@@ -64,9 +48,9 @@
     <body class="bg-white">
 
         <!-- loader -->
-        <div id="loader">
+        <!-- <div id="loader">
             <div class="spinner-border text-primary" role="status"></div>
-        </div>
+        </div> -->
         <!-- * loader -->
 
         <!-- App Header -->
@@ -113,68 +97,51 @@
                 </div>
 
 
-                <div class="listview-title mt-2">Désignations <code> </code> Qté</div>
+                <div class="listview-title mt-2">Désignations <code> </code>Prix_U   *   Qté</div>
                 
                 <ul class="listview image-listview">
 
                     <?php
-                        $fa_code = $_GET['fa_code'];
+                        $fa_code =  (string)$_GET['fa_code'];
 
-                        $sqlSelect = "SELECT 
-                                            pr_designation, 
-                                            SUM(pr_prix_vente*fa_quantite) as prix_total_vente, 
-                                            SUM(fa_quantite) as quantite_total_vente
-                                        FROM 
-                                            tsb_factures 
-                                        WHERE 
-                                            fa_code=$fa_code 
-                                        and
-                                            fa_status='Pay'
-                                        GROUP BY 
-                                            pr_designation";
+                        $sqlSelect = "  SELECT pr_designation, 
+                                            fa_quantite, pr_prix_vente,
+                                            SUM(pr_prix_vente * fa_quantite) as total
+                                        FROM tsb_factures
+                                        WHERE fa_code = '$fa_code' AND 
+                                            fa_status = 'Pay'
+                                        
+                                        GROUP BY  pr_designation, pr_prix_vente, fa_quantite";
 
                         $result = $bdd->selectEtu($sqlSelect);
-                        if (! empty($result)) { 
                             foreach ($result as $row_facture) {
                     ?>
-
+                        
                     <li>
                         <div class="item">
-                            <ion-icon name="beer-outline"  class="image"></ion-icon>
+                            <ion-icon name="beer-outline" class="image"></ion-icon>
                             <div class="in">
                                 <div>
-                                    <?php  echo $row_facture['pr_designation']; ?>
-                                    <input type="hidden"  name="pr_designation_pay"  value="<?php  echo $row_facture['pr_designation']; ?>">
+                                    <?php echo $row_facture['pr_designation']; ?>
+                                    <input type="hidden" name="pr_designation_pay" value="<?php echo $row_facture['pr_designation']; ?>">
                                 </div>
-
-                                <span class="badge badge-success">
-                                    <?php  echo $row_facture['quantite_total_vente']; ?>
-                                </span>
-
+                                <div>
+                                    <?php echo $row_facture['pr_prix_vente']; ?>        *        
+                                    <span class="badge badge-success">
+                                        <?php echo $row_facture['fa_quantite']; ?>
+                                    </span>
+                                </div>
+                
                             </div>
                         </div>
-
+                        <input name="fa_code_pay" type="hidden" value="<?php echo $fa_code; ?>">
+                        <input name="fa_status_pay" type="hidden" value="Pay">
                     </li>
-
-
-                    <input name="fa_code_pay" type="hidden" value="<?php  echo $fa_code; ?>">
-                    <input name="fa_status_pay" type="hidden" value="Pay">
-
-
-                    <?php } } else {?>  
-                        <div class="error-page">
-                            <div class="icon-box text-danger">
-                                <ion-icon name="alert-circle"></ion-icon>
-                            </div>
-                            <h2 class="title">Aucune factures payées</h2>
-                        </div>
-                    
-                    <?php }?>
-                
-                
+                        
+                    <?php } ?>
+                        <div class="listview-title mt-2 badge-primary" style="color:#fff"><code> </code> <?php echo $row_facture['total'];?> XAF</div>
+                   
                 </ul>
-
-                <div class="listview-title mt-2 badge-primary" style="color:#fff"><code> </code> <?php echo $total_pay;?> XAF</div>
 
             
             </form>
