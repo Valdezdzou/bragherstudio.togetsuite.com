@@ -41,6 +41,11 @@
 </head>
 <body>
 
+    <!-- loader -->
+    <div id="loader">
+        <div class="spinner-border text-primary" role="status"></div>
+    </div>
+    <!-- * loader -->
 
     <!-- App Header -->
     <div class="appHeader bg-primary text-light">
@@ -86,6 +91,7 @@
         input[type="number"] {
             -moz-appearance: textfield;
         }
+
         .ristourne-generale{
             color:black;
             z-index: 1001;
