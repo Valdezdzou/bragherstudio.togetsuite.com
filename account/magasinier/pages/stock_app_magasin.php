@@ -535,16 +535,16 @@
 
     <!-- ============== Js Files ==============  -->
     <!-- Bootstrap -->
-    <script src="../assets/js/lib/bootstrap.min.js"></script>
+    <script src="../../../assets/js/lib/bootstrap.min.js"></script>
     <!-- Ionicons -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <!-- Splide -->
-    <script src="../assets/js/plugins/splide/splide.min.js"></script>
+    <script src="../../../assets/js/plugins/splide/splide.min.js"></script>
     <!-- ProgressBar js -->
-    <script src="../assets/js/plugins/progressbar-js/progressbar.min.js"></script>
+    <script src="../../../assets/js/plugins/progressbar-js/progressbar.min.js"></script>
     <!-- Base Js File -->
-    <script src="../assets/js/base.js"></script>
+    <script src="../../../assets/js/base.js"></script>
 
 </body>
 

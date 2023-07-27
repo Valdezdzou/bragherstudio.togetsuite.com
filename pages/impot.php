@@ -73,7 +73,7 @@
     <!-- App Capsule -->
     <div id="appCapsule">
 
-        <div class="header-large-title">
+        <div class="header-large-title" style="text-align: center">
             <h1 class="title">Impots</h1>
         </div>
         <div class="listview-title mt-2">Fiscalité</div>
@@ -84,7 +84,7 @@
                         <ion-icon name="list-outline"></ion-icon>
                     </div>
                     <div class="in">
-                        Ajouter les informations 
+                        Ajouter une date 
                     </div>
                 </a>
             </li>
