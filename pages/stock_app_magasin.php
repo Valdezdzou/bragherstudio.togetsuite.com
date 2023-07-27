@@ -1,6 +1,6 @@
 <?php 
 
-    include '../../../functions/config.php';
+    include '../functions/config.php';
 
 	if (isLogged() == 0) {
 		 echo "
@@ -13,8 +13,8 @@
     use Phppot\DataSource;
     use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
 
-    require_once '../../../functions/config.php';
-    require_once '../../../functions/DataSource.php';
+    require_once '../functions/config.php';
+    require_once '../functions/DataSource.php';
     $bdd = new DataSource();
     $conn = $bdd->getConnection();
     //require_once ('functions/vendor/autoload.php');
@@ -36,11 +36,16 @@
     <meta name="keywords" content="TogetSuite | BAR, ERP, CRM" />
     <link rel="icon" type="image/png" href="../assets/img/favicon.png" sizes="32x32">
     <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/icon/192x192.png">
-    <link rel="stylesheet" href="../../../assets/css/style.css">
-    <link rel="manifest" href="../../../__manifest.json">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="manifest" href="../__manifest.json">
 </head>
 <body>
 
+    <!-- loader -->
+    <div id="loader">
+        <div class="spinner-border text-primary" role="status"></div>
+    </div>
+    <!-- * loader -->
 
     <!-- App Header -->
     <div class="appHeader bg-primary text-light">
@@ -161,7 +166,7 @@
     <!-- App Capsule -->
     <div id="appCapsule" class="extra-header-active">
 
-        <form action="../functions/stock_app_magasin.func.php" method="POST">
+        <form action="../functions/stock_app_magasin.func.php" method="post">
             <div class="tab-content mt-1">
 
                 <!-- ristourne générale -->

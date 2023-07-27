@@ -2,7 +2,7 @@
 
     require_once '../../../functions/config.php';
     
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if (isset($_POST['save'])) {
     
         
         $pr_id_fk = $_POST['pr_id'];
@@ -11,43 +11,36 @@
         $st_quantite = $_POST['st_quantite'];
         $st_prix_achat = $_POST['pr_prix_vente'];
         $st_quantite_add = $_POST['st_quantite_add'];
+
         $st_date = $_POST['st_date']; 
 
-                   
         for ($i=0;$i<count($st_id);$i++) {
-              
-                         $pr_id_fk_val = intval($pr_id_fk[$i]);
-                         $st_id_val = intval($st_id[$i]);
-                         $fo_id_val = intval($fo_id[$i]);
-                         $st_quantite_val = intval( $st_quantite[$i]);
-                         $st_prix_achat_val = intval( $st_prix_achat[$i]);
-                         $st_quantite_add_val = intval($st_quantite[$i]);
+            //if($st_quantite_add[$i] != 0) {
+                
+                // Stock magasin : updates : st_quantite, st_prix_achat, fo_id, st_date
+                //Mise à jour des stocks
+                $total_add_magasin = ((int)$st_quantite[$i]+(int)$st_quantite_add[$i]);
 
-                        $req = $bdd->prepare("INSERT INTO tsb_stocks( 
-                            pr_id_fk, 
-                            fo_id, 
-                            st_quantite, 
-                            stc_quantite, 
-                            stc_quantite_vente, 
-                            st_prix_achat, 
-                            st_status, 
-                            st_date) 
-                                            VALUES(
-                                                ?,
-                                                ?,
-                                                ?,
-                                                0,
-                                                0,
-                                                ?,
-                                                'comptoir',
-                                                ?)");
-                        $req->execute(array(
-                            $pr_id_fk_val,
-                            $fo_id_val,
-                            $st_quantite_add_val,                   
-                            $st_prix_achat_val, 
-                            $st_date[$i]
-                            ));
+                $sql= "INSERT INTO `tsb_stocks` (`st_id`, `pr_id_fk`, `fo_id`, `st_quantite`, `stc_quantite`, `stc_quantite_vente`, `st_prix_achat`,`st_status`, `st_date`) VALUES
+                (?,?,?,?,?,?,?,?)";
+
+                $bdd->prepare($sql)->execute([$st_id[$i], $pr_id_fk[$i], $fo_id[$i], $st_quantite[$i], 0, 0, (int)$st_prix_achat[$i], 'comptoir', $st_date[$i]]);
+
+
+                //Mise à jour des prix
+                $prix_achat_magasin = (int)$st_prix_achat[$i];
+                $sql = "UPDATE tsb_stocks SET st_prix_achat = ? WHERE pr_id_fk = ?";
+                $bdd->prepare($sql)->execute([$prix_achat_magasin, $pr_id_fk[$i]]);
+
+                //Mise à jour du fournisseur
+                //$fournisseur = (int)$fo_id[$i];
+                //$sql = "UPDATE tsb_stocks SET fo_id = ? WHERE pr_id_fk = ?";
+                //$bdd->prepare($sql)->execute([$fournisseur, $pr_id_fk[$i]]);
+
+                //Mise à jour date
+                $date = $st_date[$i];
+                $sql = "UPDATE tsb_stocks SET st_date = ? WHERE pr_id_fk = ?";
+                $bdd->prepare($sql)->execute([$date, $pr_id_fk[$i]]);
 
              header("Location: ../pages/bar_etat_stock.php");
 
