@@ -167,7 +167,7 @@
                 <!-- ristourne générale -->
                 <div class="ristourne-container">
                     <div class= "ristourne-generale">
-                        <span>Ristourne Genérale :</span>
+                        <span>Ristournes Genérales :</span>
                         <input class="champ_ristourne ristourne-individuelle active_rist" name="ristourne_general[]" type="number" style="width: 20%; font-size: 12px;">
                         <div class="slide-button">
                             <label class="switch">
