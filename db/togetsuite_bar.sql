@@ -314,14 +314,30 @@ ALTER TABLE `tsb_stocks`
   ADD CONSTRAINT `fk_st_pr_kf` FOREIGN KEY (`pr_id_fk`) REFERENCES `tsb_produits` (`pr_id`);
 COMMIT;
 
-CREATE TABLE Ristourne(
-   `vRistourne` VARCHAR(50),
+CREATE TABLE `ristourne`(
+   `v_ristourne` VARCHAR(50),
    `st_id` int(10) NOT NULL,
-   `idRistourne` VARCHAR(50) NOT NULL,
-    PRIMARY KEY(`idRistourne`),
+   `id_ristourne` INT NOT NULL AUTO_INCREMENT,
+   `date_ristourne` date NOT NULL,
+    PRIMARY KEY(`id_ristourne`),
     FOREIGN KEY(`st_id`) REFERENCES `tsb_stocks`(`st_id`)
 )ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+
+CREATE TABLE `impot`(
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `dte_initiale` date NOT NULL,
+  `dte_finale` date NOT NULL,
+  `montant` varchar(50) NOT NULL,
+  `type_impot` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+INSERT INTO `impot` (`id`,`dte_initiale`,`dte_finale`,`montant`,`type_impot`) VALUES
+(1,'2023/10/12','2023/11/12','120000','IS'),
+(2,'2023/05/20','2023/06/20','150000','IRPP'),
+(3,'2023/08/06','2023/09/06','180000','IRPP'),
+(4,'2023/12/30','2023/01/30','200000','IS');
 
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

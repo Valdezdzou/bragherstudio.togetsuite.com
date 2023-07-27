@@ -53,6 +53,16 @@
                     </div>
                 </a>
             </li>
+            <li>
+                <a href="http://localhost/bragherstudio.togetsuite.com/pages/impot.php" class="item">
+                    <div class="icon-box bg-primary">
+                        <ion-icon name="alarm"></ion-icon>      
+                    </div>
+                    <div class="in">
+                        Impots
+                    </div>
+                </a>
+            </li>
 
             <li>
                 <div class="item">
