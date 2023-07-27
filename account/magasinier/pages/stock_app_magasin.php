@@ -41,6 +41,11 @@
 </head>
 <body>
 
+    <!-- loader -->
+    <div id="loader">
+        <div class="spinner-border text-primary" role="status"></div>
+    </div>
+    <!-- * loader -->
 
     <!-- App Header -->
     <div class="appHeader bg-primary text-light">
@@ -86,6 +91,7 @@
         input[type="number"] {
             -moz-appearance: textfield;
         }
+
         .ristourne-generale{
             color:black;
             z-index: 1001;
@@ -161,7 +167,7 @@
     <!-- App Capsule -->
     <div id="appCapsule" class="extra-header-active">
 
-        <form action="../functions/stock_app_magasin.func.php" method="post">
+        <form action="../functions/stock_app_magasin.func.php" method="POST">
             <div class="tab-content mt-1">
 
                 <!-- ristourne générale -->
