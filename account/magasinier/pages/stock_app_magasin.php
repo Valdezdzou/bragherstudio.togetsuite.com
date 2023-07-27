@@ -96,7 +96,7 @@
     <!-- App Capsule -->
     <div id="appCapsule" class="extra-header-active">
 
-        <form action="../functions/stock_app_magasin.func.php" method="post">
+        <form action="../functions/stock_app_magasin.func.php" method="POST">
             <div class="tab-content mt-1">
 
                 <!-- Alcoolisé tab -->

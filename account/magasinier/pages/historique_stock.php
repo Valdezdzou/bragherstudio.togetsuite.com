@@ -243,7 +243,7 @@
                         <ion-icon name="apps-outline"></ion-icon>
                     </a>
                     <div class="dropdown-menu">
-                        <a href="./bar_manage.php" class="dropdown-item" href="#">
+                        <a href="http://localhost/bragherstudio.togetsuite.com/account/magasinier/index.php" class="dropdown-item" href="#">
                             <ion-icon name="home-outline"></ion-icon>
                             <p>Retourner au menu principal</p>
                         </a>
