@@ -83,7 +83,7 @@
             <ul class="listview image-listview flush transparent">
 
                 <li>
-                    <a href="./pages/bar_etat_stock.php" class="item">
+                    <a href="./pages/bar_etat_stock_magasin.php" class="item">
                         <div class="icon-box bg-primary">
                             <ion-icon name="storefront-outline"></ion-icon>
                         </div>
@@ -94,7 +94,7 @@
                 </li>
 
                 <li>
-                    <a href="./pages/bar_etat_stock.php" class="item">
+                    <a href="./pages/bar_etat_stock_comptoir.php" class="item">
                         <div class="icon-box bg-primary">
                             <ion-icon name="storefront-outline"></ion-icon>
                         </div>

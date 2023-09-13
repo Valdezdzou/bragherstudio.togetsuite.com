@@ -119,7 +119,7 @@
                                     </div>
                             </li>
                             <?php
-                                $sqlSelect = 'SELECT * FROM tsb_stocks where st_status="magasin" GROUP BY st_date';
+                                $sqlSelect = 'SELECT * FROM tsb_historique_stocks where st_status="magasin" GROUP BY st_date';
                                 $result = $bdd->selectEtu($sqlSelect);
                                 if (! empty($result)) {
 
@@ -187,7 +187,7 @@
                                     </div>
                             </li>
                             <?php
-                                $sqlSelect = 'SELECT * FROM tsb_stocks where st_status="comptoir" GROUP BY st_date ';
+                                $sqlSelect = 'SELECT * FROM tsb_historique_stocks where st_status="comptoir" GROUP BY st_date ';
                                 $result = $bdd->selectEtu($sqlSelect);
                                 if (! empty($result)) {
 
@@ -211,7 +211,7 @@
                                                </span>
                                             </div>                                         
                                             <div class="right">
-                                                  <a href="details_historiques_stock.php?st_date=<?php echo $row['st_date']; ?>">
+                                                  <a href="details_historiques_stock_comptoir.php?st_date=<?php echo $row['st_date']; ?>">
                                                       <ion-icon name="eye"></ion-icon>
                                                       <ion-icon name="chevron-forward-outline"></ion-icon>
                                                   </a>

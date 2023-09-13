@@ -59,7 +59,7 @@
                 <a href="./bar_etat_vente.php">
                     <div class="item">
                         <ion-icon name="beer-outline"  class="image"></ion-icon>
-                        <div class="in">
+                        <div class="in" >
                             <div>Toutes les ventes</div>
                             <span class="text-muted">Voir</span>
                         </div>

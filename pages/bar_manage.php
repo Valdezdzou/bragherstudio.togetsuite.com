@@ -122,7 +122,7 @@
                         <i class="fa-sharp fa-solid fa-truck fa-xs" style="color: #ffffff;"></i>
                     </div>
                     <div class="in">
-                        Tous les fornisseurs
+                        Tous les fournisseurs
                     </div>
                 </a>
             </li>
@@ -163,7 +163,7 @@
                         <ion-icon name="storefront-outline"></ion-icon>
                     </div>
                     <div class="in">
-                        Etat des stocks
+                        Etat stock magasin 
                     </div>
                 </a>
             </li>   
@@ -172,7 +172,7 @@
         <div class="listview-title mt-2">Historiques</div>
         <ul class="listview image-listview flush transparent">
             <li>
-                <a href="../pages/bar_etat_stock.php" class="item">
+                <a href="../pages/bar_etat_vente.php" class="item">
                     <div class="icon-box bg-info">
                         <ion-icon name="time-outline"></ion-icon>
                     </div>
@@ -190,9 +190,9 @@
                         Historiques Stocks
                     </div>
                 </a>
-            </li>  
+            </li> 
             <li>
-                <a href="../pages/bar_etat_stock.php" class="item">
+                <a href="./historique_ristourne.php" class="item">
                     <div class="icon-box bg-info">
                         <ion-icon name="time-outline"></ion-icon>
                     </div>

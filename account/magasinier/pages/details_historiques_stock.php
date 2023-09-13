@@ -111,8 +111,8 @@
                         <ul class="listview image-listview">
 
                             <?php
-                                $sqlSelect = "SELECT * FROM tsb_produits,tsb_stocks
-                                 where pr_categorie='Alcoolisé' and tsb_produits.pr_id=tsb_stocks.pr_id_fk and st_quantite!=0 and st_status='magasin' and st_date='$date'
+                                $sqlSelect = "SELECT * FROM tsb_produits,tsb_historique_stocks
+                                 where pr_categorie='Alcoolisé' and tsb_produits.pr_id=tsb_historique_stocks.pr_id_fk and st_quantite!=0 and st_status='magasin' and st_date='$date'
                                  ";
                                 $result = $bdd->selectEtu($sqlSelect);
                                 if (! empty($result)) {
@@ -151,7 +151,7 @@
                     <div class="section full mt-1">
                         <ul class="listview image-listview">
                             <?php
-                                $sqlSelect = 'SELECT * FROM tsb_produits,tsb_stocks where pr_categorie="Non alcoolisé" and tsb_produits.pr_id=tsb_stocks.pr_id_fk and st_quantite!=0  ';
+                                $sqlSelect = "SELECT * FROM tsb_produits,tsb_historique_stocks where pr_categorie='Non alcoolisé' and tsb_produits.pr_id=tsb_historique_stocks.pr_id_fk and st_quantite!=0 and st_status='magasin' and st_date='$date' ";
                                 $result = $bdd->selectEtu($sqlSelect);
                                 if (! empty($result)) {
 
@@ -190,7 +190,7 @@
                     <div class="section full mt-1">
                         <ul class="listview image-listview">
                             <?php
-                                $sqlSelect = 'SELECT * FROM tsb_produits, tsb_stocks where pr_categorie!="Alcoolisé" and pr_categorie!="Non alcoolisé" and tsb_produits.pr_id=tsb_stocks.pr_id_fk and st_quantite!=0 ';
+                                $sqlSelect = "SELECT * FROM tsb_produits, tsb_historique_stocks where pr_categorie!='Alcoolisé' and pr_categorie!='Non alcoolisé' and tsb_produits.pr_id=tsb_historique_stocks.pr_id_fk and st_quantite!=0 and st_status='magasin' and st_date='$date' ";
                                 $result = $bdd->selectEtu($sqlSelect);
                                 if (! empty($result)) {
 

@@ -33,7 +33,7 @@
             </li>
 
             <li>
-                <a href="http://localhost/bragherstudio.togetsuite.com/account/magasinier/pages/bar_etat_stock.php" class="item">
+                <a href="http://localhost/bragherstudio.togetsuite.com/account/magasinier/pages/bar_etat_stock_magasin.php" class="item">
                     <div class="icon-box bg-primary">
                          <ion-icon name="storefront-outline"></ion-icon>
                     </div>

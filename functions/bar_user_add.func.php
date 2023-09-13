@@ -2,30 +2,40 @@
 
     require_once '../functions/config.php';
     
+
+
+
+
+    
     if (isset($_POST['save'])) {
         $us_name = htmlspecialchars($_POST['us_name']);
         $us_phone = htmlspecialchars($_POST['us_phone']);
         $us_password = sha1($_POST['us_password']);
         $us_type  = $_POST['us_type'];
-        $us_status  = "Inactive";
+        $bar_id  = $_SESSION['togetsuite_bar']['bar_id'];
+        $us_status  = "Active";
         
-
+         
         $req = $bdd->query("SELECT us_phone FROM tsb_users WHERE us_phone = '$us_phone'");
 		$count_us_phone = $req->rowCount(); 
 
 
         if ($count_us_phone == 0 ) { 
 
-            $req = $bdd->prepare("INSERT INTO tsb_users(us_name,us_phone,us_password,us_type,us_status) 
-                                VALUES('$us_name','$us_phone','$us_password','$us_type','$us_status')");
-            $req->execute(array(
-                'us_name' => $us_name,
-                'us_phone' => $us_phone,
-                'us_password' => $us_password,
-                'us_type' => $us_type,
-                'us_status' => $us_status,
-            ));
-            $success = "Compte gestionnaire crée !";
+            $query = "INSERT INTO tsb_users (us_name,us_phone,us_password,us_type,us_status,bar_id) 
+                        VALUES (:us_name,:us_phone,:us_password,:us_type,:us_status,:bar_id);";
+            // Bind the parameters to the query
+            $stmt = $bdd->prepare($query);
+            $stmt->bindParam(':us_name', $us_name);
+            $stmt->bindParam(':us_phone', $us_phone);
+            $stmt->bindParam(':us_password', $us_password);
+            $stmt->bindParam(':us_type', $us_type);
+            $stmt->bindParam(':us_status', $us_status);
+            $stmt->bindParam(':bar_id', $bar_id);
+            
+            // Execute the query
+            $stmt->execute();
+            $success = "Compte crée !";
 
         } else {
             $erreur = "Le numéro $us_phone est déjà utilisé.";

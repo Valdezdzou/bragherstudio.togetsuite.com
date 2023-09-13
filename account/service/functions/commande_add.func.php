@@ -22,7 +22,7 @@
                 $fa_client[$i] = $_POST['fa_client'];
                 $req = $bdd->prepare("INSERT INTO  tsb_factures(
                     fa_code,
-                    pr_designation,
+                    pr_designation, 
                     pr_prix_vente,
                     fa_quantite,
                     us_name,

@@ -54,7 +54,7 @@
                 <ion-icon name="chevron-back-outline"></ion-icon>
             </a>
         </div>
-        <div class="pageTitle">Approvisionnement du Comptoir</div>
+        <div class="pageTitle">Approvisionnement du comptoir</div>
         <div class="right"></div>
     </div>
     <!-- * App Header -->
@@ -79,6 +79,7 @@
             </li>
         </ul>
     </div>
+    
     <!-- * Extra Header -->
 
     <style>
@@ -93,11 +94,14 @@
     </style>
 
 
+
     <!-- App Capsule -->
     <div id="appCapsule" class="extra-header-active">
 
-        <form action="../functions/stock_app_magasin.func.php" method="POST">
+        <form action="../functions/stock_app_caisse.func.php" method="POST">
             <div class="tab-content mt-1">
+
+               
 
                 <!-- Alcoolisé tab -->
                 <div class="tab-pane fade show active" id="photos" role="tabpanel">
@@ -106,7 +110,8 @@
                         <ul class="listview image-listview">
 
                             <?php
-                                $sqlSelect = 'SELECT * FROM tsb_produits,tsb_stocks where pr_categorie="Alcoolisé" and tsb_produits.pr_id=tsb_stocks.pr_id_fk';
+                                $sqlSelect = 'SELECT * FROM tsb_produits,tsb_stocks where pr_categorie="Alcoolisé" and tsb_produits.pr_id=tsb_stocks.pr_id_fk and st_quantite!=0 and st_status="magasin"'; 
+                                //$sqlSelect = 'SELECT pr_designation, pr_volume FROM tsb_produits where pr_categorie="Alcoolisé"';
                                 $result = $bdd->selectEtu($sqlSelect);
                                 if (! empty($result)) {
 
@@ -118,17 +123,18 @@
                                         <div class="in">
                                             <div>
                                                 <ion-icon name="beer-outline"  class=""></ion-icon>
-                                                <span style="font-size: 12px;"><?php  echo $row['pr_designation']; ?></span>
+                                                <span style="font-size: 12px;"><?php  echo $row['pr_designation']; ?> <?php  echo $row['pr_volume']; ?></span>
                                             </div>
                                             <span class="badge">
-                                                <input name="st_quantite[]" type="hidden" value="<?php  echo $row['st_quantite']; ?>">
-                                                <input name="pr_prix_vente[]" type="number" style="width: 50px;" value="<?php  echo $row['pr_prix_vente']; ?>">
-                                                <input name="st_quantite_add[]" type="number" style="width: 40px;" placeholder="Qté">
+                                                <input name="stc_quantite[]" type="hidden" value="<?php  echo $row['stc_quantite']; ?>"> 
+                                                <label style="color: blue;margin: 0 20px;">QUANTITE:</label>
+                                                <input name="st_quantite_add[]" type="number" style="width: 50px;" placeholder="Qté">
+                                               
                                             </span>
                                         </div>
                                     </div>
                                 </li>
-
+                                <input name="st_quantite[]" type="hidden" value="<?php  echo $row['st_quantite']; ?>"> 
                                 <input name="pr_id[]" type="hidden" value="<?php  echo $row['pr_id']; ?>">
                                 <input name="st_id[]" type="hidden" value="<?php  echo $row['st_id']; ?>">
                                 <input name="st_date[]" type="hidden"  value="<?php echo date("Y/m/d"); ?>">
@@ -148,7 +154,7 @@
                     <div class="section full mt-1">
                         <ul class="listview image-listview">
                             <?php
-                                $sqlSelect = 'SELECT * FROM tsb_produits,tsb_stocks where pr_categorie="Non alcoolisé" and tsb_produits.pr_id=tsb_stocks.pr_id_fk';
+                                $sqlSelect = 'SELECT * FROM tsb_produits,tsb_stocks where pr_categorie="Non Alcoolisé" and tsb_produits.pr_id=tsb_stocks.pr_id_fk and st_quantite!=0 and st_status="magasin"';
                                 $result = $bdd->selectEtu($sqlSelect);
                                 if (! empty($result)) {
 
@@ -160,12 +166,13 @@
                                         <div class="in">
                                             <div>
                                                 <ion-icon name="beer-outline"  class=""></ion-icon>
-                                                <span style="font-size: 12px;"><?php  echo $row['pr_designation']; ?></span>
+                                                <span style="font-size: 12px;"><?php  echo $row['pr_designation']; ?> <?php  echo $row['pr_volume']; ?></span>
                                             </div>
                                             <span class="badge">
-                                                <input name="st_quantite[]" type="hidden" value="<?php  echo $row['st_quantite']; ?>">
-                                                <input name="pr_prix_vente[]" type="number" style="width: 50px;" value="<?php  echo $row['pr_prix_vente']; ?>">
-                                                <input name="st_quantite_add[]" type="number" style="width: 40px;" placeholder="Qté">
+                                                <input name="st_quantite[]" type="hidden" value="<?php  echo $row['st_quantite']; ?>"> 
+                                                <label style="color: blue;margin: 0 20px;">QUANTITE:</label>
+                                                <input name="st_quantite_add[]" type="number" style="width: 50px;" placeholder="Qté">
+                                               
                                             </span>
                                         </div>
                                     </div>
@@ -174,7 +181,7 @@
                                 <input name="pr_id[]" type="hidden" value="<?php  echo $row['pr_id']; ?>">
                                 <input name="st_id[]" type="hidden" value="<?php  echo $row['st_id']; ?>">
                                 <input name="st_date[]" type="hidden"  value="<?php echo date("Y/m/d"); ?>">
-                            
+
                             <?php } } ?>
 
 
@@ -191,7 +198,7 @@
                     <div class="section full mt-1">
                         <ul class="listview image-listview">
                             <?php
-                                $sqlSelect = 'SELECT * FROM tsb_produits,tsb_stocks where pr_categorie!="Alcoolisé" and pr_categorie!="Non alcoolisé" and tsb_produits.pr_id=tsb_stocks.pr_id_fk';
+                                $sqlSelect = 'SELECT pr_designation, pr_volume FROM tsb_produits where pr_categorie!="Alcoolisé" and pr_categorie!="Non alcoolisé"' ;
                                 $result = $bdd->selectEtu($sqlSelect);
                                 if (! empty($result)) {
 
@@ -203,20 +210,21 @@
                                         <div class="in">
                                             <div>
                                                 <ion-icon name="beer-outline"  class=""></ion-icon>
-                                                <span style="font-size: 12px;"><?php  echo $row['pr_designation']; ?></span>
+                                                <span style="font-size: 12px;"><?php  echo $row['pr_designation']; ?> <?php  echo $row['pr_volume']; ?></span>
                                             </div>
                                             <span class="badge">
-                                                <input name="st_quantite[]" type="hidden" value="<?php  echo $row['st_quantite']; ?>">
-                                                <input name="pr_prix_vente[]" type="number" style="width: 50px;" value="<?php  echo $row['pr_prix_vente']; ?>">
-                                                <input name="st_quantite_add[]" type="number" style="width: 40px;" placeholder="Qté">
+                                                <label style="color: blue;margin: 0 20px;">QUANTITE:</label>
+                                                <input name="st_quantite_add[]" type="number" style="width: 50px;" placeholder="Qté">
                                             </span>
                                         </div>
                                     </div>
                                 </li>
-
+                               
+                                <input name="st_quantite[]" type="hidden" value="<?php  echo $row['st_quantite']; ?>"> 
                                 <input name="pr_id[]" type="hidden" value="<?php  echo $row['pr_id']; ?>">
                                 <input name="st_id[]" type="hidden" value="<?php  echo $row['st_id']; ?>">
                                 <input name="st_date[]" type="hidden"  value="<?php echo date("Y/m/d"); ?>">
+
                             
                             <?php } } ?>
 
@@ -232,31 +240,12 @@
             <br> <br>
 
             <div class="form-button-group">
-
-                <div class="form-group basic">
-                    <div class="input-wrapper">
-
-                    <?php
-                        $sqlSelect = "SELECT * FROM tsb_fournisseurs";
-                        $result = $bdd->selectAnneeSem($sqlSelect);
-                        if (! empty($result)) {?>
-
-                            <select name="fo_id" class="form-control form-select" required>
-                                <option value="">- Fournisseurs - </option>
-                                <?php foreach ($result as $row) { ?>
-                                <option value="<?php  echo $row['fo_id']; ?>"><?php  echo $row['fo_name']; ?></option>
-                                <?php } ?> 
-                            </select>
-
-                        <?php } ?> 
-                    </div>
-                </div>
-
-                <button name="save" type="submit" class="btn btn-primary btn-block" style="margin-left: 15px;">Ajouter au magasin</button>
+                <button name="save" type="submit" class="btn btn-primary btn-block" style="margin-left: 15px;">Ajouter au Comptoir</button>
             </div>
         </form>
 
     </div>
+    
 
    
 

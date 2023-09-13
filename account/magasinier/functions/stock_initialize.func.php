@@ -4,42 +4,51 @@
     
     if (isset($_POST['save'])) {
     
-        // command add function tsb_facture
-        $pr_id_fk = $_POST['pr_id'];
-        $pr_id = $_POST['pr_id'];
- 
-        $fo_id = $_POST['fo_id'];
-        $st_quantite = $_POST['st_quantite'];
-        $stc_quantite = $_POST['stc_quantite'];
-        $stc_quantite_vente = $_POST['stc_quantite_vente'];
-        $st_prix_achat = $_POST['st_prix_achat'];
+
+        $pr_id_fk = $_POST['pr_id_fk'];
         $st_date = $_POST['st_date'];
+        $st_id = $_POST['st_id'];
+        $fo_id = $_POST['fo_id'];
+       
 
-        $vider = $bdd->query('delete from tsb_stocks');
+    
+        for ($i=0;$i<count($st_id);$i++) {
+           
+                $sql = "UPDATE tsb_stocks SET stc_quantite = ? WHERE pr_id_fk = ?";
+                $bdd->prepare($sql)->execute([0, $pr_id_fk[$i]]);
 
-        for ($i=0;$i<count($pr_id);$i++) {
+
+                $sql = "UPDATE tsb_stocks SET st_quantite = ? WHERE pr_id_fk = ?";
+                $bdd->prepare($sql)->execute([0, $pr_id_fk[$i]]);
+
+                $sql = "UPDATE tsb_stocks SET stc_quantite = ? WHERE pr_id_fk = ?";
+                $bdd->prepare($sql)->execute([0, $pr_id_fk[$i]]);
+                
+                $sql = "UPDATE tsb_stocks SET st_status = ? WHERE pr_id_fk = ?";
+                $bdd->prepare($sql)->execute(["magasin", $pr_id_fk[$i]]);
+
+                $sql = "UPDATE tsb_stocks SET st_prix_achat = ? WHERE pr_id_fk = ?";
+                $bdd->prepare($sql)->execute([0, $pr_id_fk[$i]]);
+                
+      
+                $sql = "UPDATE tsb_stocks SET st_date = ? WHERE pr_id_fk = ?";
+                $bdd->prepare($sql)->execute([$st_date[$i], $pr_id_fk[$i]]);
+
+
+                $sql = "UPDATE tsb_stocks SET fo_id = ? WHERE pr_id_fk = ?";
+                $bdd->prepare($sql)->execute([3, $pr_id_fk[$i]]);
+
+               
+              
+                header("Location: ../pages/bar_etat_stock_magasin.php");
+               
+           
             
-            $req = $bdd->prepare("INSERT INTO  tsb_stocks(
-                pr_id_fk,
-                fo_id,
-                st_quantite,
-                stc_quantite,
-                stc_quantite_vente,
-                st_prix_achat,
-                st_date) VALUES(?,?,?,?,?,?,?)");
-            $req->execute(array(
-                $pr_id_fk[$i],
-                $fo_id[$i],
-                $st_quantite[$i],
-                $stc_quantite[$i],
-                $stc_quantite_vente[$i],
-                $st_prix_achat[$i],
-                $st_date[$i]
-            ));
-            $success = "Commande enregistrée !";
-            header("Location: ../pages/bar_etat_stock.php");
-         
         }
-
     } 
 ?>
+
+
+
+
+

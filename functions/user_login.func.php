@@ -14,7 +14,7 @@
         $us_type = $_POST['us_type'];
 
         
-        $sql ="SELECT us_phone,us_password,us_type FROM tsb_users WHERE us_phone=:us_phone and us_password=:us_password and us_type=:us_type and us_status='Active'";
+        $sql ="SELECT us_phone,us_password,us_type,bar_id FROM tsb_users WHERE us_phone=:us_phone and us_password=:us_password and us_type=:us_type and us_status='Active'";
 		$query= $bdd -> prepare($sql);
 		$query-> bindParam(':us_phone', $us_phone, PDO::PARAM_STR);
 		$query-> bindParam(':us_password', $us_password, PDO::PARAM_STR);
@@ -23,20 +23,56 @@
 		//$result=$query->fetch();
         $result=$query->fetch(PDO::FETCH_OBJ);
         $cnt=1;	
+        $bar_id= $result->bar_id;
 
         if($result->us_type=="Admin" and $result->us_phone==$us_phone){
+            $req ="SELECT bar_regime FROM tsb_bar WHERE bar_id=:bar_id";
+            $query= $bdd -> prepare($req);
+            $query-> bindParam(':bar_id', $bar_id, PDO::PARAM_STR);
+            $query-> execute();
+            $result=$query->fetch(PDO::FETCH_OBJ);
+
+            $_SESSION['togetsuite_bar']['bar_id'] = $bar_id;
+            $_SESSION['togetsuite_bar']['regime'] = $result->bar_regime;
             $_SESSION['togetsuite_bar']['us_phone'] = $us_phone;
             echo "<script type='text/javascript'>document.location.replace('../index.php');</script>";
             exit();	
         } else if($result->us_type=="Caisse" and $result->us_phone==$us_phone){
+            $req ="SELECT bar_regime FROM tsb_bar WHERE bar_id=:bar_id";
+            $query= $bdd -> prepare($req);
+            $query-> bindParam(':bar_id', $bar_id, PDO::PARAM_STR);
+            $query-> execute();
+            $result=$query->fetch(PDO::FETCH_OBJ);
+            
+            $row=$query->fetch(PDO::FETCH_OBJ);
+            $_SESSION['togetsuite_bar']['bar_id'] = $bar_id;
+            $_SESSION['togetsuite_bar']['regime'] = $result->bar_regime;
             $_SESSION['togetsuite_bar']['us_phone'] = $us_phone;
             echo "<script type='text/javascript'>document.location.replace('../account/caisse/');</script>";
             exit();	
         } else if($result->us_type=="Service" and $result->us_phone==$us_phone){
+            $req ="SELECT bar_regime FROM tsb_bar WHERE bar_id=:bar_id";
+            $query= $bdd -> prepare($req);
+            $query-> bindParam(':bar_id', $bar_id, PDO::PARAM_STR);
+            $query-> execute();
+            $result=$query->fetch(PDO::FETCH_OBJ);
+            
+            $row=$query->fetch(PDO::FETCH_OBJ);
+            $_SESSION['togetsuite_bar']['bar_id'] = $bar_id;
+            $_SESSION['togetsuite_bar']['regime'] = $result->bar_regime;
             $_SESSION['togetsuite_bar']['us_phone'] = $us_phone;
             echo "<script type='text/javascript'>document.location.replace('../account/service/');</script>";
             exit();	
         } else if($result->us_type=="magasinier" and $result->us_phone==$us_phone){
+            $req ="SELECT bar_regime FROM tsb_bar WHERE bar_id=:bar_id";
+            $query= $bdd -> prepare($req);
+            $query-> bindParam(':bar_id', $bar_id, PDO::PARAM_STR);
+            $query-> execute();
+            $result=$query->fetch(PDO::FETCH_OBJ);
+            
+            $row=$query->fetch(PDO::FETCH_OBJ);
+            $_SESSION['togetsuite_bar']['bar_id'] = $bar_id;
+            $_SESSION['togetsuite_bar']['regime'] = $result->bar_regime;
             $_SESSION['togetsuite_bar']['us_phone'] = $us_phone;
             echo "<script type='text/javascript'>document.location.replace('../account/magasinier/');</script>";
             exit();

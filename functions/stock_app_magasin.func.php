@@ -122,7 +122,7 @@
                 //$reste = ((int)$st_quantite[$i]-(int)$stc_quantite_add[$i]);
                 //$sql = "UPDATE tsb_stocks SET st_quantite = ? WHERE pr_id_fk = ?";
                 //$bdd->prepare($sql)->execute([$reste, $pr_id_fk[$i]]);
-                header("Location: ../pages/bar_etat_stock.php");
+                header("Location: ../pages/bar_etat_stock_magasin.php");
 
                 
             //}

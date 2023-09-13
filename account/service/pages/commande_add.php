@@ -122,7 +122,7 @@
                 <div class="tab-pane fade show active" id="photos" role="tabpanel">
 
                     <?php
-                        $sqlSelect = 'SELECT * FROM tsb_produits, tsb_stocks where pr_categorie="Alcoolisé" and tsb_produits.pr_id=tsb_stocks.pr_id_fk and stc_quantite!=0';
+                        $sqlSelect = "SELECT * FROM tsb_produits, tsb_stocks where pr_categorie='Alcoolisé' and tsb_produits.pr_id=tsb_stocks.pr_id_fk and stc_quantite!=0 and st_status='comptoir'";
                         $result = $bdd->selectEtu($sqlSelect);
                         if (! empty($result)) {
 
@@ -171,7 +171,7 @@
                 <div class="tab-pane fade" id="videos" role="tabpanel">
 
                     <?php
-                        $sqlSelect = 'SELECT * FROM tsb_produits, tsb_stocks where pr_categorie="Non alcoolisé" and tsb_produits.pr_id=tsb_stocks.pr_id_fk and stc_quantite!=0';
+                        $sqlSelect = "SELECT * FROM tsb_produits, tsb_stocks where pr_categorie='Non alcoolisé' and tsb_produits.pr_id=tsb_stocks.pr_id_fk and stc_quantite!=0 and st_status='comptoir'";
                         $result = $bdd->selectEtu($sqlSelect);
                         if (! empty($result)) {
 
@@ -220,7 +220,7 @@
                 <div class="tab-pane fade" id="sounds" role="tabpanel">
 
                     <?php
-                        $sqlSelect = 'SELECT * FROM tsb_produits, tsb_stocks where pr_categorie!="Alcoolisé" and pr_categorie!="Non alcoolisé" and tsb_produits.pr_id=tsb_stocks.pr_id_fk and stc_quantite!=0';
+                        $sqlSelect ="SELECT * FROM tsb_produits, tsb_stocks where pr_categorie!='Alcoolisé' and pr_categorie!='Non alcoolisé' and tsb_produits.pr_id=tsb_stocks.pr_id_fk and stc_quantite!=0 and st_status='comptoir'";
                         $result = $bdd->selectEtu($sqlSelect);
                         if (! empty($result)) {
 

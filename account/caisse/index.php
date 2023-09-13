@@ -105,7 +105,49 @@
                 </li>
             </ul>
 
-            
+            <div class="listview-title mt-2">
+                <h2>Stock</h2>
+            </div>
+            <ul class="listview image-listview flush transparent"> 
+                
+                <li>
+                    <a href="../magasinier/pages/bar_etat_stock_comptoir.php" class="item">
+                        <div class="icon-box bg-primary">
+                            <ion-icon name="storefront-outline"></ion-icon>
+                        </div>
+                        <div class="in">
+                            Etat stock Comptoir
+                        </div>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="listview-title mt-2">
+                <h2>Avarie & Depenses</h2>
+            </div>
+
+            <ul class="listview image-listview flush transparent">
+                <li>
+                    <a href="./pages/avarie_dpse.php" class="item">
+                        <div class="icon-box bg-primary">
+                           <ion-icon name="list-outline"></ion-icon>
+                        </div>
+                        <div class="in">
+                                Informations
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="./pages/avarie_dpse_list.php" class="item">
+                        <div class="icon-box bg-primary">
+                           <ion-icon name="filter-outline"></ion-icon>
+                        </div>
+                        <div class="in">
+                                Historique des Depenses
+                        </div>
+                    </a>
+                </li>
+            </ul>
 
         </div>
         <!-- * App Capsule -->

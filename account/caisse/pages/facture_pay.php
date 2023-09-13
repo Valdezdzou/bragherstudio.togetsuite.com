@@ -164,7 +164,7 @@
 
 
                     <input name="fa_code_pay" type="hidden" value="<?php  echo $fa_code; ?>">
-                    <input name="fa_status_pay" type="hidden" value="Pay">
+                    <input name="fa_status_pay" type="hidden" value="<?php  echo "Pay"; ?>">
 
 
                     <?php } } else {?>  

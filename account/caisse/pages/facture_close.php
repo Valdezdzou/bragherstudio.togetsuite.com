@@ -58,7 +58,7 @@
                 </a>
             </div>
             <div class="pageTitle">
-                Components
+                 Factures cloturées
             </div>
         </div>
         <!-- App Capsule -->

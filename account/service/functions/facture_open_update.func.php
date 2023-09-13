@@ -16,9 +16,9 @@
                 
                 // Stock magasin : updates : st_quantite, st_prix_achat, fo_id, st_date
                 //Mise à jour des stocks
-                $fa_status_close = $fa_status_close[$i];
+                // $fa_status_close = $fa_status_close[$i];
                 $sql = "UPDATE tsb_factures SET fa_status = ? WHERE fa_code = ?";
-                $bdd->prepare($sql)->execute([$fa_status_close, $fa_code[$i]]);
+                $bdd->prepare($sql)->execute([$fa_status_close[i], $fa_code[$i]]);
 
                 
                 header("Location: ../pages/facture_close.php");

@@ -75,19 +75,15 @@
 
             <form action="../functions/stock_initialize.func.php" method="post">
 
-                <?php 
-                        $sqlSelect = 'SELECT * FROM tsb_produits';
+            <?php 
+                        $sqlSelect = "SELECT * FROM tsb_stocks";
                         $result = $bdd->selectEtu($sqlSelect);
                         if (! empty($result)) {
 
                             foreach ($result as $row) {
                     ?>
-                    <input name="pr_id[]" type="hidden" value="<?php  echo $row['pr_id']; ?>">
-                    <input name="fo_id[]" type="hidden" value="3">
-                    <input name="st_quantite[]" type="hidden" value="0">
-                    <input name="stc_quantite[]" type="hidden" value="0">
-                    <input name="stc_quantite_vente[]" type="hidden" value="0">  
-                    <input name="st_prix_achat[]" type="hidden" value="0">  
+                    <input name="pr_id_fk[]" type="hidden" value="<?php  echo $row['pr_id_fk']; ?>">
+                    <input name="st_id[]" type="hidden" value="<?php  echo $row['st_id']; ?>">  
                     <input name="st_date[]" type="hidden" value="<?php echo date("Y/m/d"); ?>">  
 
                 <?php } } ?>

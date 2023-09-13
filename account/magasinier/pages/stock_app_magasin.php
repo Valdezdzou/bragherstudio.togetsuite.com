@@ -91,75 +91,6 @@
         input[type="number"] {
             -moz-appearance: textfield;
         }
-
-        .ristourne-generale{
-            color:black;
-            z-index: 1001;
-            position: fixed;
-            align-items:center;
-            justify-content:space-between;
-            top:112px;
-            width: 100%;
-            height:56px;
-            padding: 0 10px;
-            background: White;
-            font-size:24px;
-            display: flex;
-        }
-        .slide-button {
-         display: inline-block;
-         position: relative;
-         width: 60px;
-         height: 34px;
-         margin-bottom: 10px;
-        }
-
-       .slide-button .switch {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        margin: auto;
-        }
-
-       .slide-button .switch input {
-        display: none;
-        }
-
-        .slide-button .slider {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: #ccc;
-        border-radius: 34px;
-        transition: 0.4s;
-        }
-
-       .slide-button .slider:before {
-       position: absolute;
-       content: "";
-       height: 26px;
-       width: 26px;
-       left: 4px;
-       bottom: 4px;
-       background-color: white;
-       border-radius: 50%;
-       transition: 0.4s;
-       }
-
-       .slide-button input:checked + .slider {
-        background-color: blue;
-        }
-
-        .slide-button input:checked + .slider:before {
-        transform: translateX(26px);
-        }
-        .active_rist{
-        display: none;
-                    }
     </style>
 
 
@@ -170,20 +101,7 @@
         <form action="../functions/stock_app_magasin.func.php" method="POST">
             <div class="tab-content mt-1">
 
-                <!-- ristourne générale -->
-                <div class="ristourne-container">
-                    <div class= "ristourne-generale">
-                        <span>Ristournes Genérales :</span>
-                        <input class="champ_ristourne ristourne-individuelle active_rist" name="ristourne_general[]" type="number" style="width: 20%; font-size: 12px;">
-                        <div class="slide-button">
-                            <label class="switch">
-                                <input name="general[]" type="checkbox" id="toggle-button">
-                                <div class="slider"></div>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <!-- *ristourne générale -->
+               
 
                 <!-- Alcoolisé tab -->
                 <div class="tab-pane fade show active" id="photos" role="tabpanel">
@@ -192,7 +110,7 @@
                         <ul class="listview image-listview">
 
                             <?php
-                                $sqlSelect = 'SELECT * FROM tsb_produits,tsb_stocks where pr_categorie="Alcoolisé" and tsb_produits.pr_id=tsb_stocks.pr_id_fk';
+                                $sqlSelect = 'SELECT * FROM tsb_casier,tsb_produits,tsb_stocks where categorie="Alcoolisé" and regime = "regime 1" and pr_id = id and pr_id_fk = id';
                                 $result = $bdd->selectEtu($sqlSelect);
                                 if (! empty($result)) {
 
@@ -204,25 +122,27 @@
                                         <div class="in">
                                             <div>
                                                 <ion-icon name="beer-outline"  class=""></ion-icon>
-                                                <span style="font-size: 12px;"><?php  echo $row['pr_designation']; ?></span>
+                                                <span name="volume[]" style="font-size: 12px;"><?php  echo $row['designation']; ?> <?php  echo $row['volume']; ?></span>
                                             </div>
                                             <span class="badge">
                                                 <input name="st_quantite[]" type="hidden" value="<?php  echo $row['st_quantite']; ?>">
-                                                <input name="st_prix_achat[]" type="number" style="width: 50px;" placeholder="Prix">
-                                                <input name="st_quantite_add[]" type="number" style="width: 40px;" placeholder="Qté">
-                                                <input class="champ_ristourne ristourne_individuelle" name="ristourne[]" type="number" style="width: 70px;" placeholder="Ristourne">
+                                                <label style="color: blue;margin: 0 10px;">prix achat:</label>
+                                                <input name="st_prix_achat[]" type="number" style="width: 60px;" placeholder="<?php echo $row['prix']; ?>">
+                                                <label style="color: blue;margin: 0 10px;">quantité:</label>
+                                                <input name="st_quantite_add[]" type="number" style="width: 50px;" placeholder="Qté">
                                             </span>
                                         </div>
                                     </div>
                                 </li>
 
-                                <input name="pr_id[]" type="hidden" value="<?php  echo $row['pr_id']; ?>">
-                                <input name="st_id[]" type="hidden" value="<?php  echo $row['st_id']; ?>">
+                                <input name="pr_id[]" type="hidden" value="<?php  echo $row['pr_id']; ?>"> 
+       
+                                <input name="st_id[]" type="hidden" value="<?php  echo $row['st_id']; ?>"> 
                                 <input name="st_date[]" type="hidden"  value="<?php echo date("Y/m/d"); ?>">
 
                             <?php } } ?>
                             
-                        </ul>
+                        </ul>tf
 
                     </div>
 
@@ -235,7 +155,7 @@
                     <div class="section full mt-1">
                         <ul class="listview image-listview">
                             <?php
-                                $sqlSelect = 'SELECT * FROM tsb_produits,tsb_stocks where pr_categorie="Non alcoolisé" and tsb_produits.pr_id=tsb_stocks.pr_id_fk';
+                                $sqlSelect = 'SELECT designation, volume, prix FROM tsb_casier where categorie="Non Alcoolisé" and regime = "regime 1"';
                                 $result = $bdd->selectEtu($sqlSelect);
                                 if (! empty($result)) {
 
@@ -247,20 +167,23 @@
                                         <div class="in">
                                             <div>
                                                 <ion-icon name="beer-outline"  class=""></ion-icon>
-                                                <span style="font-size: 12px;"><?php  echo $row['pr_designation']; ?></span>
+                                                <span name="volume[]" style="font-size: 12px;"><?php  echo $row['designation']; ?></span>
                                             </div>
                                             <span class="badge">
-                                                <input name="st_quantite[]" type="hidden" value="<?php  echo $row['st_quantite']; ?>">
-                                                <input name="st_prix_achat[]" type="number" style="width: 50px;" placeholder="Prix">
-                                                <input name="st_quantite_add[]" type="number" style="width: 40px;" placeholder="Qté">
-                                                <input class="champ_ristourne ristourne-individuelle" name="ristourne[]" type="number" style="width: 70px;" placeholder="Ristourne">
+                                                 <input name="st_quantite[]" type="hidden" value="<?php  echo $row['st_quantite']; ?>"> 
+                                                <label style="color: blue;margin: 0 10px;">prix achat:</label>
+                                                <input name="st_prix_achat[]" type="number" style="width: 60px;" placeholder="<?php echo $row['prix']; ?>">
+                                                <label style="color: blue;margin: 0 10px;">quantité:</label>
+                                                <input name="st_quantite_add[]" type="number" style="width: 50px;" placeholder="Qté">
+
                                             </span>
                                         </div>
                                     </div>
                                 </li>
 
-                                <input name="pr_id[]" type="hidden" value="<?php  echo $row['pr_id']; ?>">
-                                <input name="st_id[]" type="hidden" value="<?php  echo $row['st_id']; ?>">
+                                <input name="pr_id[]" type="hidden" value="<?php  echo $row['pr_id']; ?>"> 
+                                <input name="st_id[]" type="hidden" value="<?php  echo $row['st_id']; ?>"> 
+                
                                 <input name="st_date[]" type="hidden"  value="<?php echo date("Y/m/d"); ?>">
                             
                             <?php } } ?>
@@ -294,11 +217,11 @@
                                                 <span style="font-size: 12px;"><?php  echo $row['pr_designation']; ?></span>
                                             </div>
                                             <span class="badge">
-                                                <input name="st_quantite[]" type="hidden" value="<?php  echo $row['st_quantite']; ?>">
-                                                <input name="st_prix_achat[]" type="number" style="width: 50px;" placeholder="Prix">
-                                                <input name="st_quantite_add[]" type="number" style="width: 40px;" placeholder="Qté">
-                                                <input class="champ_ristourne ristourne-individuelle" name="ristourne[]" type="number" style="width: 70px;" placeholder="Ristourne">
-
+                                                <input name="st_quantite[]" type="hidden" value="<?php  echo $row['st_quantite']; ?>"> 
+                                                <label style="color: blue;margin: 0 10px;">prix achat:</label>
+                                                <input name="st_prix_achat[]" type="number" style="width: 60px;" placeholder="<?php echo $row['prix']; ?>">
+                                                <label style="color: blue;margin: 0 10px;">quantité:</label>
+                                                <input name="st_quantite_add[]" type="number" style="width: 50px;" placeholder="Qlté">
                                             </span>
                                         </div>
                                     </div>
@@ -306,6 +229,7 @@
 
                                 <input name="pr_id[]" type="hidden" value="<?php  echo $row['pr_id']; ?>">
                                 <input name="st_id[]" type="hidden" value="<?php  echo $row['st_id']; ?>">
+
                                 <input name="st_date[]" type="hidden"  value="<?php echo date("Y/m/d"); ?>">
                             
                             <?php } } ?>
@@ -347,17 +271,7 @@
         </form>
 
     </div>
-    <script>
-        const slideButton = document.getElementById('toggle-button');
-        var inputs = document.querySelectorAll('.champ_ristourne');
-        
-        slideButton.addEventListener('change', function() {
-            inputs.forEach(function(input) {
-                // qffiche ou cache les inputs selcetionner 
-                input.classList.toggle('active_rist');
-            });
-        });
-    </script>
+    
 
    
 
